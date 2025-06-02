@@ -8,6 +8,7 @@ import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import sdgRoutes from './routes/sdgRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
+import newsRoutes from './routes/newsRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -38,6 +39,9 @@ app.use('/api/sdgs', sdgRoutes);
 
 // Mount progress routes
 app.use('/api/progress', progressRoutes);
+
+// Mount Community (news) routes
+app.use('/api/community/news', newsRoutes);
 
 // Basic Error Handling Middleware (optional, can be expanded)
 app.use((err, req, res, next) => {
