@@ -3,7 +3,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
+
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -26,6 +28,8 @@ app.get('/', (req, res) => {
 // Mount auth routes
 app.use('/api/auth', authRoutes);
 
+// Mount user routes
+app.use('/api/users', userRoutes);
 
 // Basic Error Handling Middleware (optional, can be expanded)
 app.use((err, req, res, next) => {
