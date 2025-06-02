@@ -25,18 +25,19 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'Username is already taken.' });
     }
 
-    // 3. Create new user instance (password will be hashed by the pre-save hook in User model)
-    const newUser = new User({
+    const newUserPayload = {
       username,
       email: email.toLowerCase(),
       password,
-      profilePictureUrl: profilePictureUrl || 'https://avatar.iran.liara.run/public',
-    });
+    };
 
-    // 4. Save the user to the database
+    if (req.file) {
+      newUserPayload.profilePictureUrl = req.file.path; // URL from Cloudinary
+      newUserPayload.profilePictureCloudinaryId = req.file.filename; // Public ID from Cloudinary
+    }
+
+    const newUser = new User(newUserPayload);
     const savedUser = await newUser.save();
-
-    // 5. Generate token and respond
     const token = generateToken(savedUser._id);
 
     res.status(201).json({
@@ -56,6 +57,9 @@ const registerUser = async (req, res) => {
     // Handle specific errors thrown by generateToken or Mongoose validation
     if (error.name === 'ValidationError') {
       return res.status(400).json({ message: 'Validation Error', errors: error.errors });
+    }
+    if (error.message.includes('Not an image')) { // From multer fileFilter
+        return res.status(400).json({ message: error.message });
     }
     if (error.message === 'Server configuration error: JWT_SECRET is missing.' || 
         error.message === 'Could not generate authentication token.') {

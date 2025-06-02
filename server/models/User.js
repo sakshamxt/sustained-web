@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const UserSchema = new mongoose.Schema({
@@ -23,7 +23,11 @@ const UserSchema = new mongoose.Schema({
   },
   profilePictureUrl: {
     type: String,
-    default: 'https://avatar.iran.liara.run/public', // Default profile picture URL
+    default: 'https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=Avery', // Default profile picture URL
+  },
+  profilePictureCloudinaryId: {
+    type: String,
+    default: '',
   },
   streak: {
     type: Number,
