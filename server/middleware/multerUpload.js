@@ -6,25 +6,26 @@ import cloudinary from '../config/cloudinaryConfig.js';
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: async (req, file) => {
-    // Determine folder based on file type or request context if needed
     let folder;
+    const userId = req.user ? req.user._id : 'guest'; // Get userId if available
+
     if (file.fieldname === 'profilePicture') {
       folder = 'sdg-app/profile-pictures';
-    } else if (file.fieldname === 'sdgImage') { 
+    } else if (file.fieldname === 'newsImage') { // Handle news images
+      folder = 'sdg-app/news-images';
+    } else if (file.fieldname === 'sdgImage') { // For SDG course images
       folder = 'sdg-app/sdg-images';
     } else {
       folder = 'sdg-app/uploads';
     }
     
-    // Generate a unique public_id (filename on Cloudinary)
-    // For example, fieldname-userid-timestamp
-    const userId = req.user ? req.user._id : 'guest';
-    const public_id = `${file.fieldname}-${userId}-${Date.now()}`;
+    const public_id = `${file.fieldname.replace(/\s+/g, '_')}-${userId}-${Date.now()}`;
 
     return {
       folder: folder,
       public_id: public_id,
-      allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
+      allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      // transformation: [{ width: 800, crop: 'limit' }] // Optional transformation for news images
     };
   },
 });
