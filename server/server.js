@@ -10,6 +10,7 @@ import sdgRoutes from './routes/sdgRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
 import communityRoutes from './routes/communityRoutes.js';
 import insightsRoutes from './routes/insightsRoutes.js';
+import redemptionRoutes from './routes/redemptionRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -47,6 +48,8 @@ app.use('/api/community', communityRoutes);
 // Mount Insights routes
 app.use('/api/insights', insightsRoutes);
 
+// Mount Redemption routes
+app.use('/api/redemption', redemptionRoutes);
 
 
 // Basic Error Handling Middleware (optional, can be expanded)

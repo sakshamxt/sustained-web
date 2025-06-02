@@ -31,4 +31,48 @@ const getLearnerOfTheWeek = async (req, res) => {
   }
 };
 
-export { getLearnerOfTheWeek };
+
+
+// @desc    Get heatmap data (learner counts per state in India)
+// @route   GET /api/insights/heatmap
+// @access  Public
+const getHeatmapData = async (req, res) => {
+  try {
+    // Aggregate users by state, specifically for India (case-insensitive for 'India')
+    // and where state is not empty or null.
+    const heatmapData = await User.aggregate([
+      {
+        $match: {
+          country: { $regex: /^India$/i }, // Case-insensitive match for 'India'
+          state: { $ne: null, $ne: '' }     // State must exist and not be empty
+        }
+      },
+      {
+        $group: {
+          _id: '$state', // Group by the state field
+          count: { $sum: 1 } // Count users in each state
+        }
+      },
+      {
+        $project: {
+          _id: 0, // Exclude the default _id field from MongoDB aggregation
+          state: '$_id', // Rename _id to state
+          count: '$count'
+        }
+      },
+      {
+        $sort: { count: -1 } // Optional: sort by count descending
+      }
+    ]);
+
+    res.status(200).json(heatmapData);
+
+  } catch (error) {
+    console.error('Error fetching heatmap data:', error);
+    res.status(500).json({ message: 'Server error while fetching heatmap data.' });
+  }
+};
+
+
+
+export { getLearnerOfTheWeek, getHeatmapData };
