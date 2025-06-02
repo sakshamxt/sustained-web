@@ -37,6 +37,9 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  lastActivityDate: {
+    type: Date,
+  },
   enrolledCourses: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'SDG', // Assuming 'SDG' will be the model name for SDG courses

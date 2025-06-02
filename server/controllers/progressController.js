@@ -8,46 +8,56 @@ const POINTS_PER_PRESENTATION = 5;
 const POINTS_PER_LESSON = 10;
 const POINTS_PER_ACTIVITY = 25;
 
+// Helper function to check if two dates are on the same day (ignoring time)
+const isSameDay = (date1, date2) => {
+  if (!date1 || !date2) return false;
+  return date1.getFullYear() === date2.getFullYear() &&
+         date1.getMonth() === date2.getMonth() &&
+         date1.getDate() === date2.getDate();
+};
 
-// @desc    Mark learning content as complete for a user
-// @route   POST /api/progress/:sdgId/complete/:contentType/:contentId
-// @access  Private
+// Helper function to check if date1 is the day before date2
+const isYesterday = (date1, date2) => {
+  if (!date1 || !date2) return false;
+  const yesterday = new Date(date2);
+  yesterday.setDate(date2.getDate() - 1);
+  return isSameDay(date1, yesterday);
+};
+
 const markContentAsComplete = async (req, res) => {
   try {
     const { sdgId, contentType, contentId } = req.params;
     const userId = req.user._id;
-    const { submissionData } = req.body; // For activities
+    const { submissionData } = req.body;
 
-    // Validate ObjectIds
+    // ... (validation and SDG course fetching as before) ...
     if (!mongoose.Types.ObjectId.isValid(sdgId)) {
-      return res.status(400).json({ message: 'Invalid SDG ID format.' });
+        return res.status(400).json({ message: 'Invalid SDG ID format.' });
     }
-
-    // Fetch the SDG course to get total counts for progress calculation
     const sdgCourse = await SDG.findById(sdgId);
     if (!sdgCourse) {
-      return res.status(404).json({ message: 'SDG course not found.' });
+        return res.status(404).json({ message: 'SDG course not found.' });
     }
 
-    // Find or create UserProgress document
     let userProgress = await UserProgress.findOne({ user: userId, sdgCourse: sdgId });
     if (!userProgress) {
-      // Check if user is enrolled (optional, but good practice)
-      const enrollingUser = await User.findById(userId);
-      if (!enrollingUser.enrolledCourses.some(course => course.equals(sdgId))) {
-        return res.status(403).json({ message: 'User not enrolled in this SDG course.' });
+      const enrollingUserCheck = await User.findById(userId); // Fetch full user doc for this check
+      if (!enrollingUserCheck.enrolledCourses.some(course => course.equals(sdgId))) {
+          return res.status(403).json({ message: 'User not enrolled in this SDG course.' });
       }
       userProgress = new UserProgress({ user: userId, sdgCourse: sdgId });
     }
 
     let itemAlreadyCompleted = false;
     let pointsToAward = 0;
+    let newContentCompletedThisSession = false; // Flag to check if something new was actually completed
 
     switch (contentType) {
       case 'presentation':
         if (!userProgress.completedPresentations.includes(contentId)) {
           userProgress.completedPresentations.push(contentId);
           pointsToAward = POINTS_PER_PRESENTATION;
+          newContentCompletedThisSession = true;
         } else {
           itemAlreadyCompleted = true;
         }
@@ -56,6 +66,7 @@ const markContentAsComplete = async (req, res) => {
         if (!userProgress.completedLessons.includes(contentId)) {
           userProgress.completedLessons.push(contentId);
           pointsToAward = POINTS_PER_LESSON;
+          newContentCompletedThisSession = true;
         } else {
           itemAlreadyCompleted = true;
         }
@@ -68,6 +79,7 @@ const markContentAsComplete = async (req, res) => {
             completedAt: new Date()
           });
           pointsToAward = POINTS_PER_ACTIVITY;
+          newContentCompletedThisSession = true;
         } else {
           itemAlreadyCompleted = true;
         }
@@ -76,14 +88,14 @@ const markContentAsComplete = async (req, res) => {
         return res.status(400).json({ message: 'Invalid content type.' });
     }
 
-    if (itemAlreadyCompleted) {
+    if (itemAlreadyCompleted && !newContentCompletedThisSession) { // Make sure not to penalize if user re-submits already completed item
       return res.status(200).json({ 
         message: 'Content already marked as complete.', 
         progress: userProgress 
       });
     }
 
-    // Calculate progress percentage
+    // Calculate progress percentage (as before) ...
     const totalPresentations = sdgCourse.presentations.length;
     const totalLessons = sdgCourse.lessons.length;
     const totalActivities = sdgCourse.practicalActivities.length;
@@ -95,23 +107,33 @@ const markContentAsComplete = async (req, res) => {
                              userProgress.completedActivities.length;
       userProgress.progressPercentage = Math.round((completedItems / totalItems) * 100);
     } else {
-      userProgress.progressPercentage = 0; // Or 100 if no items means course is complete
+      userProgress.progressPercentage = 0;
     }
     
     await userProgress.save();
 
-    // Update user points (and potentially streak - simplified for now)
-    if (pointsToAward > 0) {
-      const user = await User.findById(userId);
-      if (user) {
-        user.points = (user.points || 0) + pointsToAward;
-        // Basic streak logic: Increment streak. More complex daily streak logic can be added.
-        // For a simple interpretation, if they complete something new, streak might increase.
-        // A more robust streak would check daily activity.
-        // user.streak = (user.streak || 0) + 1; // Simplistic streak increment
-        await user.save();
-        // Note: req.user from protect middleware might not reflect these immediate changes
-        // unless re-fetched or updated on the req object.
+    let userForStreakAndPoints; // To store the user document for updates
+    // Update user points and streak if new content was completed
+    if (newContentCompletedThisSession && pointsToAward > 0) {
+      userForStreakAndPoints = await User.findById(userId); // Fetch the user document
+      if (userForStreakAndPoints) {
+        userForStreakAndPoints.points = (userForStreakAndPoints.points || 0) + pointsToAward;
+
+        // Streak Logic
+        const today = new Date();
+        if (userForStreakAndPoints.lastActivityDate) {
+          if (isYesterday(userForStreakAndPoints.lastActivityDate, today)) {
+            userForStreakAndPoints.streak = (userForStreakAndPoints.streak || 0) + 1; // Continued streak
+          } else if (!isSameDay(userForStreakAndPoints.lastActivityDate, today)) {
+            userForStreakAndPoints.streak = 1; // Streak broken, reset to 1 for today's activity
+          }
+          // If it's the same day, streak doesn't change for subsequent activities
+        } else {
+          userForStreakAndPoints.streak = 1; // First activity
+        }
+        userForStreakAndPoints.lastActivityDate = today;
+        
+        await userForStreakAndPoints.save();
       }
     }
 
@@ -119,7 +141,8 @@ const markContentAsComplete = async (req, res) => {
       message: `${contentType} '${contentId}' marked as complete.`,
       progress: userProgress,
       awardedPoints: pointsToAward,
-      // newTotalPoints: user ? user.points : undefined // If user was fetched and updated
+      currentStreak: userForStreakAndPoints ? userForStreakAndPoints.streak : req.user.streak, // Show updated streak
+      newTotalPoints: userForStreakAndPoints ? userForStreakAndPoints.points : req.user.points
     });
 
   } catch (error) {
