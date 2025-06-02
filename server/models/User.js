@@ -42,9 +42,24 @@ const UserSchema = new mongoose.Schema({
   },
   enrolledCourses: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'SDG', // Assuming 'SDG' will be the model name for SDG courses
+    ref: 'SDG',
   }],
-  isAdmin: { // New field for admin role
+  city: {
+    type: String,
+    trim: true,
+    default: '',
+  },
+  state: {
+    type: String,
+    trim: true,
+    default: '',
+  },
+  country: {
+    type: String,
+    trim: true,
+    default: '',
+  },
+  isAdmin: {
     type: Boolean,
     required: true,
     default: false,

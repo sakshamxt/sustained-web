@@ -33,45 +33,55 @@ const getUserProfile = async (req, res) => {
 const updateUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
+
     if (!user) {
       return res.status(404).json({ message: 'User not found.' });
     }
 
-    const { username, email } = req.body; // Get text fields
+    const { username, email, profilePictureUrl, city, state, country } = req.body; // Added state
 
-    // Handling username and email updates (check for uniqueness if changed)
+    // ... (username, email, profilePictureUrl update logic as before) ...
     if (email && email.toLowerCase() !== user.email) {
-      const emailExists = await User.findOne({ email: email.toLowerCase() });
-      if (emailExists && emailExists._id.toString() !== user._id.toString()) {
-        return res.status(400).json({ message: 'Email already in use.' });
-      }
-      user.email = email.toLowerCase();
+        const emailExists = await User.findOne({ email: email.toLowerCase() });
+        if (emailExists && emailExists._id.toString() !== user._id.toString()) {
+            return res.status(400).json({ message: 'Email already in use by another account.' });
+        }
+        user.email = email.toLowerCase();
     }
     if (username && username !== user.username) {
-      const usernameExists = await User.findOne({ username });
-      if (usernameExists && usernameExists._id.toString() !== user._id.toString()) {
-        return res.status(400).json({ message: 'Username already taken.' });
-      }
-      user.username = username;
-    }
-    
-    // Handle profile picture update
-    if (req.file) {
-      // If there's an old picture and it has a Cloudinary ID, delete it
-      if (user.profilePictureCloudinaryId) {
-        try {
-          await cloudinary.uploader.destroy(user.profilePictureCloudinaryId);
-        } catch (delError) {
-          console.error('Error deleting old profile picture from Cloudinary:', delError);
-          // Optionally, decide if this should halt the update or just log
+        const usernameExists = await User.findOne({ username });
+        if (usernameExists && usernameExists._id.toString() !== user._id.toString()) {
+            return res.status(400).json({ message: 'Username is already taken.' });
         }
-      }
-      user.profilePictureUrl = req.file.path;
-      user.profilePictureCloudinaryId = req.file.filename;
+        user.username = username;
     }
-    // If `profilePictureUrl` is explicitly sent as empty string in form-data to remove picture
-    // and no new file is uploaded, you might want to handle that.
-    // For now, this only updates if a new file is present.
+    if (req.file) {
+        if (user.profilePictureCloudinaryId) {
+            try { await cloudinary.uploader.destroy(user.profilePictureCloudinaryId); }
+            catch (delError) { console.error('Error deleting old profile picture:', delError); }
+        }
+        user.profilePictureUrl = req.file.path;
+        user.profilePictureCloudinaryId = req.file.filename;
+    } else if (profilePictureUrl === '') {
+        if (user.profilePictureCloudinaryId) {
+            try {
+                await cloudinary.uploader.destroy(user.profilePictureCloudinaryId);
+                user.profilePictureCloudinaryId = '';
+            } catch (delError) { console.error('Error deleting profile picture:', delError); }
+        }
+        user.profilePictureUrl = '';
+    }
+
+    // Update location fields if provided
+    if (city !== undefined) {
+        user.city = city.trim();
+    }
+    if (state !== undefined) { // Handle state update
+        user.state = state.trim();
+    }
+    if (country !== undefined) {
+        user.country = country.trim();
+    }
 
     const updatedUser = await user.save();
 
@@ -80,24 +90,23 @@ const updateUserProfile = async (req, res) => {
       username: updatedUser.username,
       email: updatedUser.email,
       profilePictureUrl: updatedUser.profilePictureUrl,
-      // profilePictureCloudinaryId: updatedUser.profilePictureCloudinaryId, // Not sent to client
       streak: updatedUser.streak,
       points: updatedUser.points,
+      city: updatedUser.city,
+      state: updatedUser.state,       // Include new field in response
+      country: updatedUser.country,
       enrolledCourses: updatedUser.enrolledCourses,
       createdAt: updatedUser.createdAt,
     });
 
   } catch (error) {
     console.error('Update Profile Error:', error);
-    // If file was uploaded but save failed, consider deleting new file from Cloudinary
-    // if (req.file && req.file.filename) { /* ... delete req.file.filename ... */ }
     if (error.name === 'ValidationError') {
       return res.status(400).json({ message: 'Validation Error', errors: error.errors });
     }
-    if (error.message.includes('Not an image')) {
+    if (error.message.includes('Not an image')) { 
         return res.status(400).json({ message: error.message });
     }
-    // ... (rest of your existing error handling) ...
     res.status(500).json({ message: 'Server error during profile update.' });
   }
 };
