@@ -2,6 +2,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import connectDB from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -18,6 +20,17 @@ app.use(express.json()); // To parse JSON request bodies
 // Basic route
 app.get('/', (req, res) => {
   res.send('API is running');
+});
+
+
+// Mount auth routes
+app.use('/api/auth', authRoutes);
+
+
+// Basic Error Handling Middleware (optional, can be expanded)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 const PORT = process.env.PORT || 5000;
