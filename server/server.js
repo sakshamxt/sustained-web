@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import sdgRoutes from './routes/sdgRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -30,6 +31,9 @@ app.use('/api/auth', authRoutes);
 
 // Mount user routes
 app.use('/api/users', userRoutes);
+
+// Mount SDG routes
+app.use('/api/sdgs', sdgRoutes);
 
 // Basic Error Handling Middleware (optional, can be expanded)
 app.use((err, req, res, next) => {
