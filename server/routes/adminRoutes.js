@@ -11,7 +11,10 @@ import {
   createNewsItem,
   updateNewsItem,
   deleteNewsItem,
-  getSiteStats
+  getSiteStats,
+  addRedemptionOption,
+  updateRedemptionOption,
+  deleteRedemptionOption
 } from '../controllers/adminController.js';
 import { protect } from '../middleware/authMiddleware.js';
 import { isAdmin } from '../middleware/adminMiddleware.js';
@@ -71,6 +74,18 @@ router.delete('/news/:newsId', deleteNewsItem);
 // GET /api/admin/analytics/stats
 router.get('/analytics/stats', getSiteStats);
 
+
+
+// Admin routes for redemption options
+
+// POST /api/admin/redemption/options - Add a new redemption option
+router.post('/redemption/options', addRedemptionOption);
+
+// PUT /api/admin/redemption/options/:optionId - Update a redemption option
+router.put('/redemption/options/:optionId', updateRedemptionOption);
+
+// DELETE /api/admin/redemption/options/:optionId - Delete a redemption option
+router.delete('/redemption/options/:optionId', deleteRedemptionOption);
 
 
 

@@ -1,4 +1,3 @@
-// src/pages/store/RedemptionStorePage.jsx
 import React, { useState, useEffect } from 'react';
 import apiClient from '@/lib/api';
 import useAuthStore from '@/store/authStore';
@@ -6,18 +5,17 @@ import RedemptionItemCard from '@/components/store/RedemptionItemCard';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info, ShoppingBasket } from "lucide-react";
-import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'sonner';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const RedemptionStorePage = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { isAuthenticated, user, fetchUserProfile } = useAuthStore(); // fetchUserProfile to update points
+  const location = useLocation();
+  const { isAuthenticated, user, fetchUserProfile } = useAuthStore();
   const [redeemingItemId, setRedeemingItemId] = useState(null);
-
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -25,7 +23,10 @@ const RedemptionStorePage = () => {
       setError(null);
       try {
         const response = await apiClient.get('/redemption/options');
-        setItems(response.data.items || response.data || []);
+        // FIX: The backend returns an array directly, so we use response.data.
+        // The old code (response.data.items || response.data) would have worked, 
+        // but this is cleaner and more explicit.
+        setItems(response.data || []);
       } catch (err) {
         setError(err.response?.data?.message || err.message || 'Failed to fetch redemption items.');
         console.error("Fetch Redemption Items error:", err);
@@ -48,23 +49,23 @@ const RedemptionStorePage = () => {
     if (!itemToRedeem) return;
 
     if (user.points < itemToRedeem.pointsRequired) {
-      toast.error(`You need at least ${itemToRedeem.pointsRequired} points to redeem this item.`);
+      toast.error(`You need ${itemToRedeem.pointsRequired} points for this item.`);
       return;
     }
     if (itemToRedeem.stock <= 0) {
-      toast.error("This item is currently out of stock.");
+      toast.error("This item is out of stock.");
       return;
     }
-
+    
     setRedeemingItemId(itemId);
     try {
-      // API endpoint: POST /redemption/redeem/${itemId}
       const response = await apiClient.post(`/redemption/redeem/${itemId}`);
-      toast.success(`Successfully redeemed ${itemToRedeem.name}!`);
-      // Refresh user profile to get updated points and potentially item stock
-      await fetchUserProfile(); 
-      // Refetch items to update stock display (or backend could return updated item)
-      // For simplicity, we'll just update the one item locally if possible, or refetch all
+      toast.success(response.data.message || `Successfully redeemed ${itemToRedeem.title}!`);
+      
+      // FIX: Force fetch user profile to get updated points immediately.
+      await fetchUserProfile(true); 
+      
+      // Optimistically update item stock in the UI.
       setItems(prevItems => prevItems.map(it => 
         it._id === itemId ? { ...it, stock: it.stock - 1 } : it
       ));
@@ -76,7 +77,6 @@ const RedemptionStorePage = () => {
       setRedeemingItemId(null);
     }
   };
-
 
   if (isLoading) {
     return <LoadingSpinner size="lg" />;
@@ -109,7 +109,7 @@ const RedemptionStorePage = () => {
         )}
       </header>
 
-      {items.length == 0 ? (
+      {items.length === 0 ? (
         <div className="py-10 text-center text-muted-foreground">No items available for redemption at the moment.</div>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-8">

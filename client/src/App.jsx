@@ -24,6 +24,7 @@ import AdminCreateNewsPage from './pages/admin/news/AdminCreateNewsPage';
 import AdminEditNewsPage from './pages/admin/news/AdminEditNewsPage';
 import AdminAnalyticsPage from './pages/admin/analytics/AdminAnalyticsPage';
 import AdminNotableStreaksPage from './pages/admin/streaks/AdminNotableStreaksPage';
+import AdminStoreManagementPage from './pages/admin/store/AdminStoreManagementPage';
 
 
 const NotFoundPage = () => <div className="py-10 text-center"></div>
@@ -72,10 +73,9 @@ function App() {
         <Route path="news/new" element={<AdminCreateNewsPage />} />
         <Route path="news/edit/:newsId" element={<AdminEditNewsPage />} />
 
-        {/* <Route path="analytics" element={<AdminAnalyticsPage />} />  */}
         <Route path="analytics" element={<AdminAnalyticsPage />} />
         <Route path="streaks" element={<AdminNotableStreaksPage />} />
-        
+        <Route path="store" element={<AdminStoreManagementPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
 

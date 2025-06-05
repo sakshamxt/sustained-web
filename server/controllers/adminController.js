@@ -2,6 +2,7 @@
 import User from '../models/User.js';
 import SDG from '../models/SDG.js';
 import News from '../models/News.js';
+import RedemptionOption from '../models/RedemptionOption.js';
 import UserProgress from '../models/UserProgress.js';
 import cloudinary from '../config/cloudinaryConfig.js'; 
 import mongoose from 'mongoose';
@@ -481,5 +482,113 @@ const getSiteStats = async (req, res) => {
 
 
 
+// redemption
 
-export { getAllUsers, getUserById, toggleUserBanStatus, toggleUserAdminStatus, createSDG, updateSDG, deleteSDG, createNewsItem, updateNewsItem, deleteNewsItem, getSiteStats };
+// @desc    Add a new redemption option
+// @route   POST /api/admin/redemption/options
+// @access  Admin
+const addRedemptionOption = async (req, res) => {
+    try {
+        const { 
+            title, 
+            description, 
+            pointsRequired, 
+            stock, 
+            imageUrl, 
+            linkToCourse, 
+            isActive 
+        } = req.body;
+
+        if (!title || !pointsRequired) {
+            return res.status(400).json({ message: 'Please provide a title and pointsRequired.' });
+        }
+
+        const newOption = new RedemptionOption({
+            title,
+            description,
+            pointsRequired,
+            stock: stock === 'Infinity' ? Infinity : Number(stock), // Handle 'Infinity' string from form
+            imageUrl,
+            linkToCourse,
+            isActive: isActive !== undefined ? isActive : true, // Default to active
+        });
+
+        const createdOption = await newOption.save();
+        res.status(201).json(createdOption);
+
+    } catch (error) {
+        console.error('Error adding redemption option:', error);
+        res.status(500).json({ message: 'Server error while adding redemption option.' });
+    }
+};
+
+
+
+// @desc    Update an existing redemption option
+// @route   PUT /api/admin/redemption/options/:optionId
+// @access  Admin
+const updateRedemptionOption = async (req, res) => {
+    try {
+        const { optionId } = req.params;
+        const { 
+            title, 
+            description, 
+            pointsRequired, 
+            stock, 
+            imageUrl, 
+            linkToCourse, 
+            isActive 
+        } = req.body;
+
+        const option = await RedemptionOption.findById(optionId);
+
+        if (!option) {
+            return res.status(404).json({ message: 'Redemption option not found.' });
+        }
+
+        // Update fields if they are provided in the request body
+        option.title = title ?? option.title;
+        option.description = description ?? option.description;
+        option.pointsRequired = pointsRequired ?? option.pointsRequired;
+        option.stock = stock === 'Infinity' ? Infinity : (stock ?? option.stock);
+        option.imageUrl = imageUrl ?? option.imageUrl;
+        option.linkToCourse = linkToCourse ?? option.linkToCourse;
+        option.isActive = isActive !== undefined ? isActive : option.isActive;
+
+        const updatedOption = await option.save();
+        res.status(200).json(updatedOption);
+
+    } catch (error) {
+        console.error('Error updating redemption option:', error);
+        res.status(500).json({ message: 'Server error while updating redemption option.' });
+    }
+};
+
+
+
+// @desc    Delete a redemption option
+// @route   DELETE /api/admin/redemption/options/:optionId
+// @access  Admin
+const deleteRedemptionOption = async (req, res) => {
+    try {
+        const { optionId } = req.params;
+
+        const option = await RedemptionOption.findById(optionId);
+
+        if (!option) {
+            return res.status(404).json({ message: 'Redemption option not found.' });
+        }
+
+        await option.deleteOne();
+        res.status(200).json({ message: 'Redemption option removed successfully.' });
+
+    } catch (error) {
+        console.error('Error deleting redemption option:', error);
+        res.status(500).json({ message: 'Server error while deleting redemption option.' });
+    }
+};
+
+
+
+
+export { getAllUsers, getUserById, toggleUserBanStatus, toggleUserAdminStatus, createSDG, updateSDG, deleteSDG, createNewsItem, updateNewsItem, deleteNewsItem, getSiteStats,  addRedemptionOption, updateRedemptionOption, deleteRedemptionOption };

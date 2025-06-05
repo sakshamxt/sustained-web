@@ -1,6 +1,5 @@
-// src/pages/sdg/SdgDetailPage.jsx
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { useParams, useNavigate, useLocation, Link } from 'react-router-dom'; // Added useLocation
+import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import apiClient from '@/lib/api';
 import useAuthStore from '@/store/authStore';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
@@ -9,36 +8,44 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Info, BookOpen, ListChecks, Edit, Send, Loader2 } from 'lucide-react';
-import { toast } from 'sonner'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger, DialogClose } from "@/components/ui/dialog";
+import { CheckCircle, Info, BookOpen, ListChecks, Edit, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress"; // For SDG progress bar
+import { Progress } from "@/components/ui/progress";
 
 const SdgDetailPage = () => {
   const { idOrNumber } = useParams();
   const navigate = useNavigate();
-  const location = useLocation(); // For login redirect state
+  const location = useLocation();
   const { isAuthenticated, user, fetchUserProfile, setUser, isLoading: authLoading } = useAuthStore();
 
   const [sdg, setSdg] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEnrolling, setIsEnrolling] = useState(false);
-  const [isSubmittingContent, setIsSubmittingContent] = useState(null); // Tracks contentId being submitted
+  const [isSubmittingContent, setIsSubmittingContent] = useState(null);
 
-  // For activity submission dialog
   const [isSubmissionDialogOpen, setIsSubmissionDialogOpen] = useState(false);
   const [currentActivityForSubmission, setCurrentActivityForSubmission] = useState(null);
   const [activityTextResponse, setActivityTextResponse] = useState("");
 
-  // Memoize user's progress for the current SDG
   const sdgUserProgress = useMemo(() => {
+    const defaultProgress = { completedItems: new Set(), percentage: 0 };
     if (!user || !sdg || !user.progressBySdg || !user.progressBySdg[sdg._id]) {
-      return { completedItems: [], percentage: 0 };
+      return defaultProgress;
     }
-    return user.progressBySdg[sdg._id];
+    
+    const progressData = user.progressBySdg[sdg._id];
+    const completedPresentations = progressData.completedPresentations || [];
+    const completedLessons = progressData.completedLessons || [];
+    const completedActivities = (progressData.completedActivities || []).map(act => act.activityId);
+
+    return {
+      completedItems: new Set([...completedPresentations, ...completedLessons, ...completedActivities]),
+      percentage: progressData.progressPercentage || 0,
+    };
   }, [user, sdg]);
 
   const fetchSdgDetail = useCallback(async () => {
@@ -58,13 +65,11 @@ const SdgDetailPage = () => {
     fetchSdgDetail();
   }, [fetchSdgDetail]);
 
-  // Fetch user profile if not fully loaded (e.g. for progress data)
   useEffect(() => {
-    if (isAuthenticated && user && !user.progressBySdg) {
-       fetchUserProfile(); // To get progress data
+    if (isAuthenticated && user && (!user.progressBySdg || !user.enrolledCourses)) {
+       fetchUserProfile(true); // Force fetch if progress or enrollment data is missing
     }
   }, [isAuthenticated, user, fetchUserProfile]);
-
 
   const isEnrolled = useMemo(() => {
     if (!isAuthenticated || !user || !user.enrolledCourses || !sdg) return false;
@@ -72,21 +77,18 @@ const SdgDetailPage = () => {
   }, [isAuthenticated, user, sdg]);
 
   const handleEnroll = async () => {
-    // ... (same as before) ...
     if (!isAuthenticated) {
-      toast.error("You must be logged in to enroll in an SDG course.");
+      toast.error("You must be logged in to enroll.");
       navigate('/login', { state: { from: location } });
       return;
     }
-    if (!sdg || !sdg._id) return;
-
     setIsEnrolling(true);
     try {
       await apiClient.post(`/sdgs/${sdg._id}/enroll`);
-      toast.success("Successfully enrolled in the SDG course!");
-      await fetchUserProfile(); // Refresh user profile for enrollment status and progress data
+      toast.success(`Successfully enrolled in ${sdg.title}!`);
+      await fetchUserProfile(true);
     } catch (err) {
-      toast.error("Failed to enroll in the SDG course. " + (err.response?.data?.message || err.message));
+      toast.error("Enrollment failed.", { description: err.response?.data?.message || err.message });
     } finally {
       setIsEnrolling(false);
     }
@@ -94,58 +96,66 @@ const SdgDetailPage = () => {
 
   const handleMarkAsComplete = async (contentType, contentId, submissionData = null) => {
     if (!sdg || !sdg._id) return;
-    setIsSubmittingContent(contentId); // Set loading for specific item
+    setIsSubmittingContent(contentId);
 
     const requestBody = submissionData ? { submissionData } : {};
 
     try {
       const response = await apiClient.post(`/progress/${sdg._id}/complete/${contentType}/${contentId}`, requestBody);
-      const { progressPercentage, awardedPoints, currentStreak, newTotalPoints } = response.data;
+      const { progress: updatedSdgProgress, awardedPoints, currentStreak, newTotalPoints } = response.data;
 
-      toast.success(`Marked ${contentType} as complete! You earned ${awardedPoints} points. Current streak: ${currentStreak} days.`);
+      toast.success(`${contentType.charAt(0).toUpperCase() + contentType.slice(1)} Completed!`, {
+        description: `You earned ${awardedPoints} points. Current streak: ${currentStreak} days.`
+      });
 
-      // Update user store and local SDG progress state
-     await fetchUserProfile(true);
+      // Optimistically update the user state in Zustand for immediate UI refresh
+      const currentUser = useAuthStore.getState().user;
+      if (currentUser) {
+        const updatedUser = {
+          ...currentUser,
+          points: newTotalPoints,
+          streak: currentStreak,
+          progressBySdg: {
+            ...currentUser.progressBySdg,
+            [sdg._id]: updatedSdgProgress,
+          },
+        };
+        setUser(updatedUser);
+      }
 
-      // Close submission dialog if it was open
       if (contentType === 'activity' && isSubmissionDialogOpen) {
         setIsSubmissionDialogOpen(false);
         setActivityTextResponse("");
       }
-
     } catch (err) {
-      toast.error("Failed to mark as complete. " + (err.response?.data?.message || err.message));
+      toast.error("Completion Failed", { description: err.response?.data?.message || `Could not mark ${contentType} as complete.` });
     } finally {
-      setIsSubmittingContent(null); // Clear loading for specific item
+      setIsSubmittingContent(null);
     }
   };
-
+  
   const openSubmissionDialog = (activity) => {
     setCurrentActivityForSubmission(activity);
-    setActivityTextResponse(""); // Reset previous response
+    setActivityTextResponse("");
     setIsSubmissionDialogOpen(true);
   };
 
   const handleActivitySubmit = () => {
     if (!currentActivityForSubmission) return;
-    // Basic validation for text response
     if (currentActivityForSubmission.submissionType === 'textResponse' && !activityTextResponse.trim()) {
-        toast.error("Please enter a response before submitting.");
-        return;
+      toast.error("Please provide a response before submitting.");
+      return;
     }
     const submissionData = { textResponse: activityTextResponse };
     handleMarkAsComplete('activity', currentActivityForSubmission._id, submissionData);
   };
 
-
-  // Loading and error states
   if (isLoading || (isAuthenticated && authLoading && !user && !sdg)) return <LoadingSpinner size="lg" />;
   if (error) return <div className="container py-8 mx-auto text-center"><Alert variant="destructive"><Info className="w-4 h-4" /><AlertTitle>Error</AlertTitle><AlertDescription>{error}</AlertDescription></Alert></div>;
   if (!sdg) return <div className="py-10 text-center text-muted-foreground">SDG not found.</div>;
 
-  // Assuming content items have an `_id` field.
   const renderContentItem = (item, type) => {
-    const isCompleted = sdgUserProgress.completedItems.includes(item._id);
+    const isCompleted = sdgUserProgress.completedItems.has(item._id);
     const isSubmittingThis = isSubmittingContent === item._id;
 
     return (
@@ -154,7 +164,7 @@ const SdgDetailPage = () => {
         {isCompleted ? (
           <Badge variant="outline" className="text-green-600 border-green-600"><CheckCircle className="w-4 h-4 mr-1" />Completed</Badge>
         ) : (
-          item.requiresSubmission ? ( // Assuming activities have 'requiresSubmission' and 'submissionType' fields
+          item.requiresSubmission ? ( 
             <Button size="sm" variant="outline" onClick={() => openSubmissionDialog(item)} disabled={isSubmittingThis || !isEnrolled}>
               {isSubmittingThis ? <Loader2 className="w-4 h-4 animate-spin" /> : <Edit className="w-4 h-4 mr-1" />} Submit
             </Button>
@@ -167,16 +177,13 @@ const SdgDetailPage = () => {
       </div>
     );
   };
-
-  // Use sdg.presentations etc. These should be arrays from your API.
+  
   const presentations = sdg.presentations || [];
   const lessons = sdg.lessons || [];
   const activities = sdg.practicalActivities || [];
 
-
   return (
     <div className="container py-8 mx-auto">
-      {/* ... (SDG Header and Enroll button - same as before) ... */}
       <Card className="mb-8 overflow-hidden">
         {sdg.imageUrl && <img src={sdg.imageUrl} alt={sdg.title} className="object-cover w-full h-64 md:h-96" />}
         <CardHeader className="border-b">
@@ -210,9 +217,7 @@ const SdgDetailPage = () => {
       {isEnrolled && (
         <>
           <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="text-xl text-primary">Your Progress</CardTitle>
-            </CardHeader>
+            <CardHeader><CardTitle className="text-xl text-primary">Your Progress</CardTitle></CardHeader>
             <CardContent>
               <Progress value={sdgUserProgress.percentage} className="w-full h-3" />
               <p className="mt-2 text-sm text-right text-muted-foreground">{sdgUserProgress.percentage}% Complete</p>
@@ -244,29 +249,19 @@ const SdgDetailPage = () => {
         </>
       )}
 
-      {/* Dialog for Activity Submission */}
       <Dialog open={isSubmissionDialogOpen} onOpenChange={setIsSubmissionDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Submit Activity: {currentActivityForSubmission?.title}</DialogTitle>
-            <DialogDescription>
-              {currentActivityForSubmission?.description || "Complete the required task for this activity."}
-            </DialogDescription>
+            <DialogDescription>{currentActivityForSubmission?.description || "Complete the required task for this activity."}</DialogDescription>
           </DialogHeader>
           <div className="py-4">
-            {currentActivityForSubmission?.submissionType === 'textResponse' && ( // Check if submission type is textResponse
+            {currentActivityForSubmission?.submissionType === 'textResponse' && (
               <div className="grid gap-4">
                 <Label htmlFor="activity-text-response">Your Response</Label>
-                <Textarea
-                  id="activity-text-response"
-                  value={activityTextResponse}
-                  onChange={(e) => setActivityTextResponse(e.target.value)}
-                  placeholder="Type your response here..."
-                  rows={5}
-                />
+                <Textarea id="activity-text-response" value={activityTextResponse} onChange={(e) => setActivityTextResponse(e.target.value)} placeholder="Type your response here..." rows={5} />
               </div>
             )}
-            {/* Add other submission types here if needed, e.g., file upload */}
           </div>
           <DialogFooter>
             <DialogClose asChild><Button type="button" variant="outline" disabled={isSubmittingContent === currentActivityForSubmission?._id}>Cancel</Button></DialogClose>
@@ -276,7 +271,6 @@ const SdgDetailPage = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
     </div>
   );
 };
