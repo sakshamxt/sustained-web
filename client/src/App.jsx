@@ -12,6 +12,21 @@ import ProfilePage from './pages/user/ProfilePage';
 import IndiaHeatmapPage from './pages/insights/IndiaHeatmapPage';
 import RedemptionStorePage from './pages/store/RedemptionStorePage';
 
+import AdminProtectedRoute from './components/auth/AdminProtectedRoute';
+import AdminLayout from './components/layout/AdminLayout';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import AdminUserManagementPage from './pages/admin/AdminUserManagementPage';
+import AdminSdgManagementPage from './pages/admin/sdg/AdminSdgManagementPage';
+import AdminCreateSdgPage from './pages/admin/sdg/AdminCreateSdgPage';
+import AdminEditSdgPage from './pages/admin/sdg/AdminEditSdgPage';
+import AdminNewsManagementPage from './pages/admin/news/AdminNewsManagementPage';
+import AdminCreateNewsPage from './pages/admin/news/AdminCreateNewsPage';
+import AdminEditNewsPage from './pages/admin/news/AdminEditNewsPage';
+import AdminAnalyticsPage from './pages/admin/analytics/AdminAnalyticsPage';
+import AdminNotableStreaksPage from './pages/admin/streaks/AdminNotableStreaksPage';
+
+
+const NotFoundPage = () => <div className="py-10 text-center"></div>
 
 function App() {
 
@@ -34,7 +49,35 @@ function App() {
         <Route element={<ProtectedRoute />}> {/* Wrap protected routes */}
           <Route path="/profile" element={<ProfilePage/>} />
           {/* Add other protected routes here, e.g., /dashboard, /settings */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
+
+
+        {/* Admin Routes with AdminLayout and AdminProtectedRoute */}
+      <Route path="/admin" element={
+        <AdminProtectedRoute>
+          <AdminLayout /> 
+        </AdminProtectedRoute>
+      }>
+        <Route index element={<AdminDashboardPage />} /> {/* /admin will render dashboard */}
+        <Route path="users" element={<AdminUserManagementPage />} /> {/* /admin/users */}
+        
+        {/* SDG Management Routes */}
+        <Route path="sdgs" element={<AdminSdgManagementPage />} />
+        <Route path="sdgs/new" element={<AdminCreateSdgPage />} />
+        <Route path="sdgs/edit/:sdgId" element={<AdminEditSdgPage />} />
+
+        {/* News Management Routes */}
+        <Route path="news" element={<AdminNewsManagementPage />} />
+        <Route path="news/new" element={<AdminCreateNewsPage />} />
+        <Route path="news/edit/:newsId" element={<AdminEditNewsPage />} />
+
+        {/* <Route path="analytics" element={<AdminAnalyticsPage />} />  */}
+        <Route path="analytics" element={<AdminAnalyticsPage />} />
+        <Route path="streaks" element={<AdminNotableStreaksPage />} />
+        
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
 
       </Routes>
     </MainLayout>

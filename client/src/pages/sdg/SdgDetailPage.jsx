@@ -1,6 +1,6 @@
 // src/pages/sdg/SdgDetailPage.jsx
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom'; // Added useLocation
+import { useParams, useNavigate, useLocation, Link } from 'react-router-dom'; // Added useLocation
 import apiClient from '@/lib/api';
 import useAuthStore from '@/store/authStore';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
@@ -100,13 +100,12 @@ const SdgDetailPage = () => {
 
     try {
       const response = await apiClient.post(`/progress/${sdg._id}/complete/${contentType}/${contentId}`, requestBody);
-      const { progressPercentage, pointsToAward, currentStreak, newTotalPoints } = response.data;
+      const { progressPercentage, awardedPoints, currentStreak, newTotalPoints } = response.data;
 
-      toast.success(`Marked ${contentType} as complete! You earned ${pointsToAward} points. Current streak: ${currentStreak} days.`);
+      toast.success(`Marked ${contentType} as complete! You earned ${awardedPoints} points. Current streak: ${currentStreak} days.`);
 
       // Update user store and local SDG progress state
-      // Fetching user profile will update everything including progressBySdg and overall points/streak
-      await fetchUserProfile();
+     await fetchUserProfile(true);
 
       // Close submission dialog if it was open
       if (contentType === 'activity' && isSubmissionDialogOpen) {
