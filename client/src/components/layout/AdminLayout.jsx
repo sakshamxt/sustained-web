@@ -20,7 +20,7 @@ const AdminLayout = () => {
     { to: "/admin/sdgs", label: "SDGs", icon: <BookOpen /> },
     { to: "/admin/news", label: "News", icon: <Newspaper /> },
     { to: "/admin/store", label: "Store Items", icon: <Gift /> },
-    { to: "/admin/analytics", label: "Analytics", icon: <BarChart3 /> }, 
+    // { to: "/admin/analytics", label: "Analytics", icon: <BarChart3 /> }, 
     { to: "/admin/streaks", label: "Notable Streaks", icon: <Zap /> },
   ];
 
