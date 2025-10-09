@@ -1,5 +1,4 @@
-/* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+/* src/index.css - UPDATED */
 
 @tailwind base;
 @tailwind components;
@@ -7,96 +6,49 @@
 
 @layer base {
   :root {
-    /* Shadcn/UI Base Variables (using Slate as a starting point) */
-    --background: 0 0% 100%; /* Light mode background */
-    --foreground: 222.2 84% 4.9%; /* Light mode text */
-
+    /* New, modern color palette with cool blues and professional grays */
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 224 71.4% 4.1%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 224 71.4% 4.1%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 224 71.4% 4.1%;
 
-    /* Primary: Let's use our Deep Teal as the primary color */
-    --primary: 222.2 47.4% 11.2%; /* Deep Teal (hsl(173, 80%, 30%)) */
-    --primary-foreground: 210 40% 98%; /* A very light teal/white for text on deep teal */
+    /* Primary color is now a confident, modern blue */
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%; /* Default Secondary (light gray) */
+    /* Secondary is a light, clean gray for card backgrounds */
+    --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
+    
+    /* Muted text is a softer gray for better readability */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Accent: Let's use our Warm Amber as the accent color */
-    --accent: 35 92% 60%; /* Warm Amber (hsl(35, 92%, 60%)) */
-    --accent-foreground: 224 9.8% 10%; /* Dark text for amber */
+    /* Accent is a vibrant cyan for calls-to-action */
+    --accent: 173 96% 42%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%; /* Default Destructive (red) */
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%; /* Focus ring - can be related to primary or accent */
+    --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem; /* Base border radius for Shadcn components */
-
-    /* Your raw brand colors (can be referenced or used to override above) */
-    --brand-primary-color: 173 80% 30%;   /* Deep Teal */
-    --brand-primary-hover-color: 173 75% 35%;
-    --brand-accent-color: 35 92% 55%;   /* Warm Amber */
-    --brand-accent-hover-color: 35 90% 60%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark Mode Variables */
+    /* Optional: Define a dark theme */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    /* Primary in dark mode (adjust if Deep Teal needs different dark variant) */
-    --primary: 210 40% 98%; /* Slightly lighter/adjusted Deep Teal for dark */
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    /* Accent in dark mode */
-    --accent: 217.2 32.6% 17.5%; /* Slightly brighter amber for dark mode */
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%; /* Adjusted focus ring for dark */ --chart-1: 220 70% 50%; --chart-2: 160 60% 45%; --chart-3: 30 80% 55%; --chart-4: 280 65% 60%; --chart-5: 340 75% 55%;
+    /* ... define all other dark variables ... */
   }
 }
-
-@layer base {
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Manrope', sans-serif;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-
 
 @layer base {
   * {
@@ -104,5 +56,39 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* --- FIX FOR READABILITY --- */
+    /* Use Tailwind's anti-aliasing for smoother fonts */
+    @apply antialiased; 
+  }
+
+  /* Increase readability for all paragraphs */
+  p {
+    @apply text-base leading-relaxed text-slate-700;
+  }
+}
+
+
+@layer utilities {
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  /* Styles for the horizontal scrolling section */
+  .horizontal-scroller {
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .horizontal-scroller::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-item {
+    scroll-snap-align: center;
   }
 }

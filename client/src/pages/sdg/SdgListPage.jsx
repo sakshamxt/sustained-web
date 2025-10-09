@@ -1,90 +1,96 @@
-// src/pages/sdg/SdgListPage.jsx
+// src/pages/sdg/SdgListPage.jsx - UPDATED with larger cards
+
 import React, { useState, useEffect } from 'react';
 import apiClient from '@/lib/api';
 import SdgCard from '@/components/sdg/SdgCard';
-import LoadingSpinner from '@/components/common/LoadingSpinner'; // Or use Skeleton
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from "lucide-react";
-// For Skeleton loading (optional)
-// import { Skeleton } from "@/components/ui/skeleton";
-
-// const SdgCardSkeleton = () => (
-//   <div className="flex flex-col space-y-3">
-//     <Skeleton className="h-[192px] w-full rounded-xl" /> {/* Image area: h-48 */}
-//     <div className="p-2 space-y-2">
-//       <Skeleton className="w-3/4 h-4" />
-//       <Skeleton className="w-1/2 h-4" />
-//       <Skeleton className="w-full h-8 mt-2" /> {/* Button area */}
-//     </div>
-//   </div>
-// );
-
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Terminal, ListFilter, Search } from "lucide-react";
 
 const SdgListPage = () => {
-  const [sdgs, setSdgs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [sdgs, setSdgs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    const fetchSdgs = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const response = await apiClient.get('/sdgs');
-        setSdgs(response.data.sdgs || response.data || []); // Adjust based on API response structure
-      } catch (err) {
-        setError(err.response?.data?.message || err.message || 'Failed to fetch SDGs.');
-        console.error("Fetch SDGs error:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  useEffect(() => {
+    const fetchSdgs = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await apiClient.get('/sdgs');
+        let sdgData = [];
+        if (response.data && Array.isArray(response.data.sdgs)) {
+            sdgData = response.data.sdgs;
+        } else if (response.data && Array.isArray(response.data)) {
+            sdgData = response.data;
+        }
+        setSdgs(sdgData);
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to fetch SDGs.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchSdgs();
+  }, []);
 
-    fetchSdgs();
-  }, []);
+  const filteredSdgs = sdgs.filter(sdg =>
+    (sdg.title && sdg.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
-  if (isLoading) {
-    // return <LoadingSpinner size="lg" />;
-    // Or using Skeletons for a better UX:
-    return (
-      <div className="container py-8 mx-auto">
-        <h1 className="mb-8 text-3xl font-bold text-center text-primary">Our SDG Courses</h1>
-         {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-           {[...Array(6)].map((_, i) => <SdgCardSkeleton key={i} />)}
-         </div> */}
-         <LoadingSpinner size="lg" /> {/* Simpler loading state */}
-      </div>
-    );
-  }
+  if (isLoading) return <LoadingSpinner size="lg" />;
+  if (error) return ( <div className="container py-8 mx-auto text-center"><Alert variant="destructive" className="max-w-lg mx-auto"><Terminal className="w-4 h-4" /><AlertTitle>Error</AlertTitle><AlertDescription>{error}</AlertDescription></Alert></div> );
 
-  if (error) {
-    return (
-      <div className="container py-8 mx-auto text-center">
-         <Alert variant="destructive" className="max-w-lg mx-auto">
-          <Terminal className="w-4 h-4" />
-          <AlertTitle>Error Fetching SDGs</AlertTitle>
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      </div>
-    );
-  }
+  return (
+    <div className="container py-8 mx-auto">
+      <section className="p-6 mb-12 rounded-lg bg-slate-50 border">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+          <div className="flex-1">
+            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
+              The 17 Goals
+            </h1>
+            <p className="mt-2 text-slate-600 max-w-prose">
+              Explore the Sustainable Development Goals — a universal call to action to end poverty, protect the planet, and ensure that by 2030 all people enjoy peace and prosperity.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 w-full md:w-auto">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Input type="search" placeholder="Search goals..." className="w-full pl-10 text-base outline:none" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            </div>
+            <Button variant="outline">
+              <ListFilter className="w-4 h-4 mr-2" />
+              Filters
+            </Button>
+          </div>
+        </div>
+      </section>
 
-  if (sdgs.length === 0) {
-    return <div className="py-10 text-center text-muted-foreground">No SDG courses available at the moment.</div>;
-  }
-
-  return (
-    <div className="container py-8 mx-auto">
-      <h1 className="mb-10 text-3xl font-bold tracking-tight text-center text-primary">
-        Explore the Sustainable Development Goals
-      </h1>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-8">
-        {sdgs.map(sdg => (
-          <SdgCard key={sdg._id || sdg.sdgNumber} sdg={sdg} />
-        ))}
-      </div>
-    </div>
-  );
+      {filteredSdgs.length === 0 && !isLoading ? (
+        <div className="py-20 text-center text-slate-500">
+          <h3 className="text-2xl font-semibold">No Results Found</h3>
+          <p className="mt-2">Try adjusting your search term.</p>
+        </div>
+      ) : (
+        // --- UPDATED GRID ---
+        // Changed lg:grid-cols-6 to lg:grid-cols-5 and increased gap for larger cards
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            {filteredSdgs.map((sdg, index) => (
+            <div
+              key={sdg._id || sdg.sdgNumber}
+              className="opacity-0 animate-fade-in-up"
+              style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'forwards' }}
+            >
+              <SdgCard sdg={sdg} />
+            </div>
+            ))}
+          </div>
+      )}
+    </div>
+  );
 };
 
 export default SdgListPage;
