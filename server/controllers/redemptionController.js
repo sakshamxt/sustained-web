@@ -8,7 +8,8 @@ import mongoose from 'mongoose';
 const getRedemptionOptions = async (req, res) => {
   try {
     const options = await RedemptionOption.find({ isActive: true })
-      .sort({ pointsRequired: 1 }); // Show cheaper options first
+      .sort({ pointsRequired: 1 })
+      .select('title description pointsRequired stock isActive linkToCourse imageUrl'); // Include imageUrl
     res.status(200).json(options);
   } catch (error) {
     console.error('Error fetching redemption options:', error);

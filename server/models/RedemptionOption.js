@@ -16,6 +16,10 @@ const RedemptionOptionSchema = new mongoose.Schema({
     required: [true, 'Please specify the points required.'],
     min: [0, 'Points required cannot be negative.'],
   },
+  imageUrl: { 
+    type: String,
+    trim: true,
+  },
   linkToCourse: { // Optional: if this redemption links to an external resource/course
     type: String,
     trim: true,

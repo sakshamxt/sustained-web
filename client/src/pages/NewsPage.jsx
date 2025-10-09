@@ -43,8 +43,8 @@ const NewsPage = () => {
   );
   
   // --- 3. Derive featured and other news from the *filtered* results ---
-  const featuredNews = filteredNews.length > 0 ? filteredNews[0] : null;
-  const otherNews = filteredNews.length > 1 ? filteredNews.slice(1) : [];
+  // const featuredNews = filteredNews.length > 0 ? filteredNews[0] : null;
+  // const otherNews = filteredNews.length > 1 ? filteredNews.slice(1) : [];
 
   if (isLoading) return <LoadingSpinner size="lg" />;
   if (error) return ( <div className="container py-8 mx-auto text-center"><Alert variant="destructive" className="max-w-lg mx-auto"><Info className="w-4 h-4" /><AlertTitle>Error</AlertTitle><AlertDescription>{error}</AlertDescription></Alert></div> );
@@ -77,7 +77,7 @@ const NewsPage = () => {
             </div>
           ) : (
             <div className="space-y-12">
-              {featuredNews && (
+              {/* {featuredNews && (
                 <section className="opacity-0 animate-fade-in-up" style={{ animationFillMode: 'forwards' }}>
                   <Link to={`/news/${featuredNews._id}`} className="block group">
                     <div className="overflow-hidden rounded-lg aspect-video mb-6">
@@ -90,10 +90,10 @@ const NewsPage = () => {
                     <p className="mt-4 text-base leading-relaxed text-slate-600 line-clamp-3">{featuredNews.text}</p>
                   </Link>
                 </section>
-              )}
-              {otherNews.length > 0 && (
-                <section className="space-y-8 pt-12 border-t">
-                  {otherNews.map((item, index) => (
+              )} */}
+              {filteredNews.length > 0 && (
+                <section className="space-y-8">
+                  {filteredNews.map((item, index) => (
                     <div key={item._id || item.title} className="opacity-0 animate-fade-in-up" style={{ animationDelay: `${100 + index * 100}ms`, animationFillMode: 'forwards' }}>
                       <NewsCard newsItem={item} />
                     </div>

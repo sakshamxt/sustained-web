@@ -41,4 +41,21 @@ const getAllNews = async (req, res) => {
   }
 };
 
-export { getAllNews, getNotableStreaks };
+// @desc    Get a specific news item by ID
+// @route   GET /api/community/news/:id
+// @access  Public
+const getNewsById = async (req, res) => {
+  try {
+    const newsItem = await News.findById(req.params.id)
+                                .populate('postedByAdmin', 'username profilePictureUrl');
+    if (!newsItem) {
+      return res.status(404).json({ message: 'News item not found.' });
+    }
+    res.status(200).json(newsItem);
+  } catch (error) {
+    console.error('Error fetching news item by ID:', error);
+    res.status(500).json({ message: 'Server error while fetching news item.' });
+  }
+};
+
+export { getAllNews, getNotableStreaks, getNewsById };

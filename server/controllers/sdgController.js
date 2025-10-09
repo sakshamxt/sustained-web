@@ -1,21 +1,17 @@
-// server/controllers/sdgController.js - FIXED
+// server/controllers/sdgController.js - FINAL FIX
 
 import SDG from '../models/SDG.js';
 import User from '../models/User.js';
 import mongoose from 'mongoose';
 
 
-// @desc    Fetch all SDGs
-// @route   GET /api/sdgs
-// @access  Public
+// @desc    Fetch all SDGs
+// @route   GET /api/sdgs
+// @access  Public
 const getAllSDGs = async (req, res) => {
   try {
-    const sdgs = await SDG.find({}).sort({ sdgNumber: 1 }); // Sort by SDG number
-    
-    // --- FIX ---
-    // Wrap the array in an object to match what the frontend expects.
+    const sdgs = await SDG.find({}).sort({ sdgNumber: 1 });
     res.json({ sdgs });
-
   } catch (error) {
     console.error('Error fetching all SDGs:', error);
     res.status(500).json({ message: 'Server error. Could not fetch SDGs.' });
@@ -23,43 +19,51 @@ const getAllSDGs = async (req, res) => {
 };
 
 
-// @desc    Fetch a single SDG by its ID or SDG number
-// @route   GET /api/sdgs/:idOrNumber
-// @access  Public
+// @desc    Fetch a single SDG by its ID or SDG number
+// @route   GET /api/sdgs/:idOrNumber
+// @access  Public
 const getSDGByIdOrNumber = async (req, res) => {
-  try {
-    const idOrNumber = req.params.idOrNumber;
-    let sdg;
+  try {
+    const { idOrNumber } = req.params;
+    let query;
 
-    if (mongoose.Types.ObjectId.isValid(idOrNumber)) {
-      sdg = await SDG.findById(idOrNumber);
-    }
-    
-    if (!sdg) {
-      const number = parseInt(idOrNumber, 10);
-      if (!isNaN(number) && number >= 1 && number <= 17) {
-        sdg = await SDG.findOne({ sdgNumber: number });
-      }
-    }
+    // --- REWRITTEN LOGIC ---
+    // First, we decide what kind of identifier we have.
+    if (mongoose.Types.ObjectId.isValid(idOrNumber)) {
+      // It's a valid ID format, so we will query by ID.
+      query = SDG.findById(idOrNumber);
+    } else {
+      // It's not a valid ID format, so let's see if it's a number.
+      const number = parseInt(idOrNumber, 10);
+      if (!isNaN(number)) {
+        // It's a number, so we will query by sdgNumber.
+        query = SDG.findOne({ sdgNumber: number });
+      } else {
+        // It's neither a valid ID nor a number. We can immediately say it's not found.
+        return res.status(404).json({ message: 'SDG not found: Invalid identifier format.' });
+      }
+    }
 
-    if (sdg) {
-      // --- GOOD PRACTICE ---
-      // For consistency, let's also wrap this single object.
-      res.json({ sdg });
-    } else {
-      res.status(404).json({ message: 'SDG not found.' });
-    }
-  } catch (error) {
-    console.error('Error fetching SDG by ID/Number:', error);
-    res.status(500).json({ message: 'Server error. Could not fetch SDG details.' });
-  }
+    // Now, we execute the query we prepared.
+    const sdg = await query;
+
+    // Finally, we check the result and send the appropriate response.
+    if (sdg) {
+      res.json({ sdg });
+    } else {
+      res.status(404).json({ message: 'SDG not found with the given identifier.' });
+    }
+
+  } catch (error) {
+    console.error('Error fetching SDG by ID/Number:', error);
+    res.status(500).json({ message: 'Server error. Could not fetch SDG details.' });
+  }
 };
 
 
-
-// @desc    Enroll a user in an SDG course
-// @route   POST /api/sdgs/:sdgId/enroll
-// @access  Private
+// @desc    Enroll a user in an SDG course
+// @route   POST /api/sdgs/:sdgId/enroll
+// @access  Private
 const enrollInSDG = async (req, res) => {
   try {
     const { sdgId } = req.params;
@@ -94,7 +98,5 @@ const enrollInSDG = async (req, res) => {
     res.status(500).json({ message: 'Server error during enrollment.' });
   }
 };
-
-
 
 export { getAllSDGs, getSDGByIdOrNumber, enrollInSDG };

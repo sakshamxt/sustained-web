@@ -1,4 +1,4 @@
-// src/pages/user/ProfilePage.jsx - FIXED
+// src/pages/user/ProfilePage.jsx - FINAL FIX
 
 import React, { useEffect, useState, useMemo } from 'react';
 import useAuthStore from '@/store/authStore';
@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 import { Edit3, ImagePlus, Trash2, Loader2, Star, Zap, User, MapPin, Mail, LogOut } from 'lucide-react';
 import { Progress } from "@/components/ui/progress";
 import { Link } from 'react-router-dom';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 const ProfilePage = () => {
   const { user, isAuthenticated, fetchUserProfile, setUser, logoutUser, isLoading: authLoading } = useAuthStore();
@@ -31,9 +32,7 @@ const ProfilePage = () => {
         const response = await apiClient.get('/sdgs');
         const sdgData = response.data?.sdgs || response.data || [];
         if (Array.isArray(sdgData)) setAllSdgs(sdgData);
-      } catch (error) {
-        console.error("Could not fetch SDG list for profile page", error);
-      }
+      } catch (error) { console.error("Could not fetch SDG list", error); }
     };
     fetchAllSdgs();
   }, []);
@@ -45,15 +44,20 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (isEditDialogOpen && user) {
       setEditFormData({
         username: user.username || '', email: user.email || '',
         city: user.city || '', state: user.state || '', country: user.country || '',
       });
       setProfilePicturePreview(user.profilePictureUrl || null);
-      setProfilePictureFile(null); setRemoveProfilePicFlag(false);
+      setProfilePictureFile(null); 
+      setRemoveProfilePicFlag(false);
     }
-  }, [user, isEditDialogOpen]);
+  // --- THE FIX ---
+  // The `user` object has been removed from this dependency array.
+  // This hook will now only run when the dialog's open state changes,
+  // preventing it from resetting the form while you are typing.
+  }, [isEditDialogOpen]);
 
   useEffect(() => {
     if (isAuthenticated && (!user || !user.points)) { fetchUserProfile(); }
@@ -77,14 +81,15 @@ const ProfilePage = () => {
     e.preventDefault();
     setIsUpdatingProfile(true);
     const formDataToSubmit = new FormData();
-    // Use a different name for the remove flag for FormData
-    const { removeProfilePicFlag: _flag, ...otherData } = editFormData;
-    Object.keys(otherData).forEach(key => formDataToSubmit.append(key, otherData[key] || ''));
+    formDataToSubmit.append('username', editFormData.username);
+    formDataToSubmit.append('email', editFormData.email);
+    formDataToSubmit.append('city', editFormData.city || '');
+    formDataToSubmit.append('state', editFormData.state || '');
+    formDataToSubmit.append('country', editFormData.country || '');
 
     if (profilePictureFile) {
       formDataToSubmit.append('profilePicture', profilePictureFile);
     } else if (removeProfilePicFlag) {
-      // A common pattern is to send a specific field to indicate removal
       formDataToSubmit.append('removeProfilePicture', 'true');
     }
     try {
@@ -132,7 +137,6 @@ const ProfilePage = () => {
                       <DialogTrigger asChild>
                         <Button variant="outline" className="w-full mt-4"><Edit3 className="w-4 h-4 mr-2" />Edit Profile</Button>
                       </DialogTrigger>
-                      {/* --- FIX: The complete Edit Profile form is now correctly placed inside the Dialog --- */}
                       <DialogContent className="sm:max-w-[525px]">
                         <DialogHeader>
                           <DialogTitle>Edit Profile</DialogTitle>

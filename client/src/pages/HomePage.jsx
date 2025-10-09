@@ -90,14 +90,14 @@ const HomePage = () => {
             </div>
             <div className="p-8 bg-slate-50 rounded-lg">
                 {/* UPDATED IMAGE */}
-                <img src={home3} alt="Mockup of the AI tutor chat interface" className="rounded-md shadow-lg"/>
+                <img src={home3} alt="Mockup of the AI tutor chat interface" className="rounded-md"/>
             </div>
         </div>
          {/* Feature 2 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="p-8 bg-slate-50 rounded-lg lg:order-last">
                  {/* UPDATED IMAGE */}
-                 <img src={home4} alt="Mockup of the gamified rewards system" className="rounded-md shadow-lg"/>
+                 <img src={home4} alt="Mockup of the gamified rewards system" className="rounded-md"/>
             </div>
              <div className="lg:order-first">
                 <Badge>Gamified Rewards</Badge>

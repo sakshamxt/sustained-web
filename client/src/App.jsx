@@ -7,8 +7,10 @@ import RegisterPage from './pages/RegisterPage';
 import SdgListPage from './pages/sdg/SdgListPage';
 import SdgDetailPage from './pages/sdg/SdgDetailPage';
 import NewsPage from './pages/NewsPage';
+import NewsDetailPage from './pages/NewsDetailPage';
 import ProtectedRoute from './components/auth/ProtectedRoute'
 import ProfilePage from './pages/user/ProfilePage';
+import EnrolledCoursesPage from './pages/user/EnrolledCoursesPage';
 import IndiaHeatmapPage from './pages/insights/IndiaHeatmapPage';
 import RedemptionStorePage from './pages/store/RedemptionStorePage';
 
@@ -42,6 +44,7 @@ function App() {
         <Route path="/sdgs" element={<SdgListPage />} />
         <Route path="/sdgs/:idOrNumber" element={<SdgDetailPage />} />
         <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/:newsId" element={<NewsDetailPage />} />
         <Route path="/insights/heatmap" element={<IndiaHeatmapPage />} />
         <Route path="/redeem" element={<RedemptionStorePage />} />
 
@@ -49,6 +52,7 @@ function App() {
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}> {/* Wrap protected routes */}
           <Route path="/profile" element={<ProfilePage/>} />
+          <Route path="/my-courses" element={<EnrolledCoursesPage />} />
           {/* Add other protected routes here, e.g., /dashboard, /settings */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>

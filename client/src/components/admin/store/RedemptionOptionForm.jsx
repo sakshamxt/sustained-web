@@ -14,6 +14,7 @@ const RedemptionOptionForm = ({ initialData, onSubmit, isLoading, submitButtonTe
     pointsRequired: 0,
     stock: 0,
     imageUrl: '',
+    linkToCourse: '',
     isActive: true,
   });
 
@@ -26,11 +27,12 @@ const RedemptionOptionForm = ({ initialData, onSubmit, isLoading, submitButtonTe
         pointsRequired: initialData.pointsRequired || 0,
         stock: initialData.stock === Infinity ? 'Infinity' : (initialData.stock ?? 0),
         imageUrl: initialData.imageUrl || '',
+        linkToCourse: initialData.linkToCourse || '',
         isActive: initialData.isActive !== undefined ? initialData.isActive : true,
       });
     } else {
       // If creating, use default empty state
-      setFormData({ title: '', description: '', pointsRequired: 0, stock: 0, imageUrl: '', isActive: true });
+      setFormData({ title: '', description: '', pointsRequired: 0, stock: 0, imageUrl: '', linkToCourse: '', isActive: true });
     }
   }, [initialData]);
 
@@ -80,6 +82,10 @@ const RedemptionOptionForm = ({ initialData, onSubmit, isLoading, submitButtonTe
       <div>
         <Label htmlFor="imageUrl">Image URL</Label>
         <Input id="imageUrl" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
+      </div>
+      <div>
+        <Label htmlFor="linkToCourse">External Link</Label>
+        <Input id="linkToCourse" name="linkToCourse" value={formData.linkToCourse} onChange={handleChange} />
       </div>
       <div className="flex items-center pt-2 space-x-2">
         <Switch id="isActive" name="isActive" checked={formData.isActive} onCheckedChange={handleSwitchChange} />

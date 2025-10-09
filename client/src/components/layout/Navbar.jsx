@@ -16,7 +16,7 @@ const Navbar = () => {
     navigate('/login');
   };
 
-  const navLinks = [
+  const baseNavLinks = [
     { to: '/', label: 'Home' },
     { to: '/sdgs', label: 'SDGs' },
     { to: '/news', label: 'News' },
@@ -24,8 +24,12 @@ const Navbar = () => {
     { to: '/redeem', label: 'Redeem Store' }, 
   ];
 
+  const navLinks = isAuthenticated 
+    ? [...baseNavLinks.slice(0, 1), { to: '/my-courses', label: 'My Courses' }, ...baseNavLinks.slice(1)]
+    : baseNavLinks;
+
   const activeLinkStyle = "bg-primary/10 text-primary";
-  const inactiveLinkStyle = "hover:bg-primary/10 hover:text-primary";
+  const inactiveLinkStyle = "text-slate-700 hover:bg-primary/10 hover:text-primary";
 
   return (
     // UPDATED: Added bg-background/90 and backdrop-blur-sm for a modern, transparent effect
