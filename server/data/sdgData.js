@@ -11,7 +11,7 @@ const sdgs = [
       "Analyze strategies and policies for poverty reduction.",
       "Explore global and local poverty challenges and solutions."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+1`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/06/58/92/61/1000_F_658926136_ANn7FRIggCKxLXSwgif0JVgIyV0b34Sm.jpg`,
     fullDescription: "Globally, the number of people living in extreme poverty declined by more than half between 1990 and 2015. Still, about 736 million people lived on less than US$1.90 a day in 2015. This SDG aims to eradicate extreme poverty for all people everywhere and to reduce at least by half the proportion of men, women, and children of all ages living in poverty in all its dimensions according to national definitions.",
     presentations: [
       { title: "Understanding Global Poverty", urlOrContent: "placeholder_url/content_sdg1_pres1" },
@@ -36,7 +36,7 @@ const sdgs = [
       "Learn about sustainable agricultural practices for food security.",
       "Analyze global efforts to achieve zero hunger."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+2`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/06/58/92/56/1000_F_658925612_cMFd6kQ6H5CXGZeUmUe8Few0QiFBu7xk.jpg`,
     fullDescription: "After decades of steady decline, the number of people who suffer from hunger – as measured by the prevalence of undernourishment – began to slowly increase again in 2015. Current estimates show that nearly 690 million people are hungry, or 8.9 percent of the world population. This SDG aims to end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round.",
     presentations: [
       { title: "The Global Food Crisis", urlOrContent: "placeholder_url/content_sdg2_pres1" },
@@ -61,7 +61,7 @@ const sdgs = [
       "Learn about strategies for disease prevention and health promotion.",
       "Explore the importance of mental health and well-being."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+3`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/15/67/38/34/1000_F_1567383468_yJGpVhJS83WXzA2tAtrA13T55R2d2g4Z.jpg`,
     fullDescription: "Ensuring healthy lives and promoting well-being at all ages is essential to sustainable development. Significant strides have been made in increasing life expectancy and reducing some of the common killers associated with child and maternal mortality. However, more efforts are needed to fully eradicate a wide range of diseases and address many different persistent and emerging health issues.",
     presentations: [
       { title: "Global Health Issues Overview", urlOrContent: "placeholder_url/content_sdg3_pres1" },
@@ -86,7 +86,7 @@ const sdgs = [
       "Learn about challenges and innovations in global education.",
       "Explore the concept of lifelong learning and its benefits."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+4`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/06/58/92/61/1000_F_658926136_ANn7FRIggCKxLXSwgif0JVgIyV0b34Sm.jpg`,
     fullDescription: "Education enables upward socioeconomic mobility and is a key to escaping poverty. Over the past decade, major progress was made towards increasing access to education and school enrollment rates at all levels, particularly for girls. Nevertheless, about 260 million children were still out of school in 2018 — nearly one fifth of the global population in that age group. This SDG aims to ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes.",
     presentations: [
       { title: "Barriers to Education Worldwide", urlOrContent: "placeholder_url/content_sdg4_pres1" },
@@ -111,7 +111,7 @@ const sdgs = [
       "Learn about the challenges women and girls face globally.",
       "Explore strategies to promote gender equality and women's empowerment."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+5`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/02/28/33/75/1000_F_228337582_9lk0i0LlBuEgINqdWBxvYK9GSMENMzUM.jpg`,
     fullDescription: "Gender equality is not only a fundamental human right, but a necessary foundation for a peaceful, prosperous and sustainable world. Providing women and girls with equal access to education, health care, decent work, and representation in political and economic decision-making processes will fuel sustainable economies and benefit societies and humanity at large.",
     presentations: [
       { title: "Understanding Gender Bias", urlOrContent: "placeholder_url/content_sdg5_pres1" },
@@ -136,7 +136,7 @@ const sdgs = [
       "Learn about water conservation and sustainable water management practices.",
       "Explore the importance of sanitation and hygiene (WASH)."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+6`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/96/89/16/1000_F_1696891654_qPvHrHpGjwUzA1tD78Sj45x2dxERFLCD.jpg`,
     fullDescription: "Access to safe water, sanitation and hygiene is the most basic human need for health and well-being. Billions of people will lack access to these basic services in 2030 unless progress quadruples. Demand for water is rising owing to rapid population growth, urbanization and increasing water needs from agriculture, industry, and energy sectors.",
     presentations: [
       { title: "The World's Water Resources", urlOrContent: "placeholder_url/content_sdg6_pres1" },
@@ -161,7 +161,7 @@ const sdgs = [
       "Learn about various renewable energy sources and technologies.",
       "Explore the importance of energy efficiency and conservation."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+7`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/14/31/58/75/1000_F_1431587525_FUZ5eFE74Q8e249CUsMxEnw2VYrrzWus.jpg`,
     fullDescription: "Access to affordable, reliable, sustainable and modern energy is a cornerstone of development. Yet, 759 million people lack access to electricity, and one-third of the world’s population relies on dangerous and inefficient cooking systems. This SDG aims to ensure universal access to affordable, reliable and modern energy services, increase substantially the share of renewable energy in the global energy mix, and double the global rate of improvement in energy efficiency.",
     presentations: [
       { title: "Introduction to Renewable Energy Sources", urlOrContent: "placeholder_url/content_sdg7_pres1" },
@@ -186,7 +186,7 @@ const sdgs = [
       "Learn about challenges in the global labor market, including youth employment and informal work.",
       "Explore the concept of 'decent work' and its components."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+8`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/10/33/06/20/1000_F_1033062034_8ZEBjFHFOLet9SGko8zOrzu486GLrt0V.jpg`,
     fullDescription: "Sustained and inclusive economic growth can drive progress, create decent jobs for all and improve living standards. The COVID-19 pandemic has disrupted billions of lives and endangered the global economy. This SDG aims to sustain per capita economic growth in accordance with national circumstances and, in particular, at least 7 per cent gross domestic product growth per annum in the least developed countries.",
     presentations: [
       { title: "Global Economic Trends", urlOrContent: "placeholder_url/content_sdg8_pres1" },
@@ -211,7 +211,7 @@ const sdgs = [
       "Learn about challenges and opportunities in developing sustainable infrastructure.",
       "Explore the importance of research, development, and technological innovation."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+9`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/13/41/74/37/1000_F_1341743702_EoBWD4578gAQFIWJSxZzzucbkpm2sIdf.jpg`,
     fullDescription: "Inclusive and sustainable industrialization, together with innovation and infrastructure, can unleash dynamic and competitive economic forces that generate employment and income. They play a key role in introducing and promoting new technologies, facilitating international trade and enabling the efficient use of resources.",
     presentations: [
       { title: "Sustainable Infrastructure Projects", urlOrContent: "placeholder_url/content_sdg9_pres1" },
@@ -236,7 +236,7 @@ const sdgs = [
       "Learn about the causes and consequences of inequality.",
       "Explore policies and actions to reduce inequalities."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+10`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/10/46/86/99/1000_F_1046869928_K5bCcYHRNz9sCMGRM2Y6Hf5JMTDAxq75.jpg`,
     fullDescription: "Inequality within and among countries is a persistent cause for concern. While income inequality between countries may have reduced, inequality within countries has risen. There is growing consensus that economic growth is not sufﬁcient to reduce poverty if it is not inclusive and if it does not involve the three dimensions of sustainable development – economic, social and environmental.",
     presentations: [
       { title: "Measuring Inequality: Gini Coefficient and Beyond", urlOrContent: "placeholder_url/content_sdg10_pres1" },
@@ -261,7 +261,7 @@ const sdgs = [
       "Learn about principles of sustainable urban planning and design.",
       "Explore ways to make communities more inclusive, safe, and resilient."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+11`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/56/69/60/1000_F_1656696022_Rp9cQOeaedzRX57JEBleA2K1DJSlzwyP.jpg`,
     fullDescription: "The world is becoming increasingly urbanized. Since 2007, more than half the world’s population has been living in cities, and that share is projected to rise to 60 per cent by 2030. Cities and metropolitan areas are powerhouses of economic growth—contributing about 60 per cent of global GDP. However, they also account for about 70 per cent of global carbon emissions and over 60 per cent of resource use.",
     presentations: [
       { title: "Challenges of Rapid Urbanization", urlOrContent: "placeholder_url/content_sdg11_pres1" },
@@ -286,7 +286,7 @@ const sdgs = [
       "Learn about the principles of a circular economy and sustainable lifestyles.",
       "Explore ways individuals and businesses can promote responsible consumption and production."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+12`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/14/17/17/02/1000_F_1417170261_zArniqDhtcmI8a481TDe9ounytbwMjdI.jpg`,
     fullDescription: "Sustainable consumption and production is about promoting resource and energy efficiency, sustainable infrastructure, and providing access to basic services, green and decent jobs and a better quality of life for all. Its implementation helps to achieve overall development plans, reduce future economic, environmental and social costs, strengthen economic competitiveness and reduce poverty.",
     presentations: [
       { title: "The Problem with Fast Fashion/Electronics", urlOrContent: "placeholder_url/content_sdg12_pres1" },
@@ -311,7 +311,7 @@ const sdgs = [
       "Learn about international agreements and national policies for climate action.",
       "Explore individual and collective actions to mitigate and adapt to climate change."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+13`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/59/11/22/1000_F_1659112289_lNsgDxhDUunHVunwMRHlrOH8cLKjh21b.jpg`,
     fullDescription: "Climate change is now affecting every country on every continent. It is disrupting national economies and affecting lives, costing people, communities and countries dearly today and even more tomorrow. Weather patterns are changing, sea levels are rising, and weather events are becoming more extreme. This SDG acknowledges that the UN Framework Convention on Climate Change is the primary international, intergovernmental forum for negotiating the global response to climate change.",
     presentations: [
       { title: "The Science of Global Warming", urlOrContent: "placeholder_url/content_sdg13_pres1" },
@@ -336,7 +336,7 @@ const sdgs = [
       "Learn about threats to marine biodiversity, such as pollution and overfishing.",
       "Explore solutions for ocean conservation and sustainable use of marine resources."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+14`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/57/75/60/1000_F_1657756011_9S5lS1tOmIS72sXTWOMwxoZwH4N8ReFL.jpg`,
     fullDescription: "The world’s oceans – their temperature, chemistry, currents and life – drive global systems that make the Earth habitable for humankind. Our rainwater, drinking water, weather, climate, coastlines, much of our food, and even the oxygen in the air we breathe, are all ultimately provided and regulated by the sea. Careful management of this essential global resource is a key feature of a sustainable future.",
     presentations: [
       { title: "Threats to Marine Ecosystems (Plastic, Overfishing)", urlOrContent: "placeholder_url/content_sdg14_pres1" },
@@ -361,7 +361,7 @@ const sdgs = [
       "Learn about threats such as deforestation, desertification, and biodiversity loss.",
       "Explore strategies for conservation, restoration, and sustainable land management."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+15`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/17/12/15/59/1000_F_1712155933_CTLji9NbQ5rZ1UCOIEyZJTS9iZiXO8lP.jpg`,
     fullDescription: "Forests cover nearly 31 per cent of our planet’s land area. From the air we breathe, to the water we drink, to the food we eat–forests sustain us. Terrestrial ecosystems are vital for human well-being and livelihoods, supporting agriculture, forestry, and tourism. This SDG aims to conserve and restore the use of terrestrial ecosystems such as forests, wetlands, drylands and mountains by 2020.",
     presentations: [
       { title: "The Importance of Biodiversity", urlOrContent: "placeholder_url/content_sdg15_pres1" },
@@ -386,7 +386,7 @@ const sdgs = [
       "Learn about challenges to peace, such as conflict, violence, and corruption.",
       "Explore the role of effective, accountable, and inclusive institutions."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+16`,
+    imageUrl: `https://as1.ftcdn.net/v2/jpg/14/63/05/84/1000_F_1463058441_Nqk57FKtPcN8TVVbnDSoDN7odKuWjmyW.jpg`,
     fullDescription: "Peaceful, just and inclusive societies are necessary to achieve the Sustainable Development Goals (SDGs). People everywhere need to be free of fear from all forms of violence and feel safe as they go about their lives whatever their ethnicity, faith or sexual orientation. High levels of armed violence and insecurity have a destructive impact on a country’s development, affecting economic growth and often resulting in long standing grievances among communities.",
     presentations: [
       { title: "Understanding Human Rights", urlOrContent: "placeholder_url/content_sdg16_pres1" },
@@ -411,7 +411,7 @@ const sdgs = [
       "Learn about the different actors involved (governments, civil society, private sector, academia).",
       "Explore how finance, technology, capacity-building, and trade contribute to the SDGs."
     ],
-    imageUrl: `https://placehold.co/600x400?text=SDG+17`,
+    imageUrl: `https://as2.ftcdn.net/v2/jpg/13/26/30/71/1000_F_1326307159_oP0R7JJL0YS28z0UWi8uvgy3VgLUhsYw.jpg`,
     fullDescription: "The SDGs can only be realized with strong global partnerships and cooperation. A successful sustainable development agenda requires partnerships between governments, the private sector and civil society. These inclusive partnerships built upon a shared vision and shared goals that place people and the planet at the centre, are needed at the global, regional, national and local level.",
     presentations: [
       { title: "The Role of Multi-Stakeholder Partnerships", urlOrContent: "placeholder_url/content_sdg17_pres1" },

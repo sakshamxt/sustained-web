@@ -120,7 +120,7 @@ const RegisterPage = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className={formErrors.email ? "border-destructive" : ""}
+               className={formErrors.username ? "border-destructive" : ""}
               />
               {formErrors.email && <p className="mt-1 text-xs text-destructive">{formErrors.email}</p>}
             </div>
@@ -160,7 +160,7 @@ const RegisterPage = () => {
               />
             </div>
             {formErrors.general && <p className="text-sm text-center text-destructive">{formErrors.general}</p>}
-            <Button type="submit" className="w-full bg-brand-accent hover:bg-brand-accent-hover" disabled={isLoading}>
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
               {isLoading ? 'Creating account...' : 'Create Account'}
             </Button>
           </form>

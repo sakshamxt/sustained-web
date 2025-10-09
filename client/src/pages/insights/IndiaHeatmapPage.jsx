@@ -43,17 +43,17 @@ const IndiaHeatmapPage = () => {
     return map;
   }, [heatmapData]);
 
-  const sortedData = useMemo(() => 
-    [...heatmapData].sort((a, b) => b.count - a.count), 
-  [heatmapData]);
+  const sortedData = useMemo(() => 
+    [...heatmapData].sort((a, b) => b.count - a.count), 
+  [heatmapData]);
 
   const colorScale = useMemo(() => {
     if (heatmapData.length === 0) return () => '#f1f5f9';
     const counts = heatmapData.map(d => d.count);
     const maxCount = Math.max(...counts);
     
-    const startColor = { h: 210, s: 40, l: 90 };
-    const endColor = { h: 221, s: 83, l: 53 };
+    const startColor = { h: 210, s: 40, l: 90 };
+    const endColor = { h: 221, s: 83, l: 53 };
 
     return (count) => {
       if (count === 0 || maxCount === 0) return '#f1f5f9';
@@ -65,16 +65,9 @@ const IndiaHeatmapPage = () => {
     };
   }, [heatmapData]);
 
-  // --- THE FIX ---
-  // The handleStateHover function now displays "Active Users" in the tooltip.
   const handleStateHover = (stateName, count, position) => {
     if (stateName) {
-      setTooltipContent(
-        <div>
-          <p className="font-bold">{stateName}</p>
-          <p>Active Users: {count.toLocaleString()}</p>
-        </div>
-      );
+      setTooltipContent(<div><p className="font-bold">{stateName}</p><p>Active Users: {count.toLocaleString()}</p></div>);
       setTooltipPosition(position);
     } else {
       setTooltipContent('');
@@ -91,11 +84,12 @@ const IndiaHeatmapPage = () => {
   return (
     <div className="container py-8 mx-auto">
       <Tooltip content={tooltipContent} position={tooltipPosition} />
+      {/* UPDATED: Using theme-aware text colors */}
       <header className="py-12 mb-12 text-center border-b">
-        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
+        <h1 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
           Community Heatmap
         </h1>
-        <p className="max-w-2xl mx-auto mt-4 text-lg text-slate-600">
+        <p className="max-w-2xl mx-auto mt-4 text-lg text-muted-foreground">
           Visualizing the learning activity and collective impact of the SustainED community across India.
         </p>
       </header>
@@ -115,7 +109,8 @@ const IndiaHeatmapPage = () => {
             </CardHeader>
             <CardContent>
               {heatmapData.length === 0 ? (
-                <div className="py-20 text-center text-slate-500">No heatmap data available.</div>
+                // UPDATED: Using theme-aware text color
+                <div className="py-20 text-center text-muted-foreground">No heatmap data available.</div>
               ) : viewMode === 'map' ? (
                 <IndiaMap data={dataByState} colorScale={colorScale} onStateHover={handleStateHover} onStateLeave={handleStateLeave} />
               ) : (

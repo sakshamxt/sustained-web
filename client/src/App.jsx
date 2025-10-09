@@ -1,5 +1,7 @@
 // src/App.jsx
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import useAuthStore from './store/authStore';
 import MainLayout from './components/layout/MainLayout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -8,7 +10,7 @@ import SdgListPage from './pages/sdg/SdgListPage';
 import SdgDetailPage from './pages/sdg/SdgDetailPage';
 import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
-import ProtectedRoute from './components/auth/ProtectedRoute'
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import ProfilePage from './pages/user/ProfilePage';
 import EnrolledCoursesPage from './pages/user/EnrolledCoursesPage';
 import IndiaHeatmapPage from './pages/insights/IndiaHeatmapPage';
@@ -38,29 +40,25 @@ function App() {
       <Routes>
 
         {/* Public routes */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/sdgs" element={<SdgListPage />} />
-        <Route path="/sdgs/:idOrNumber" element={<SdgDetailPage />} />
-        <Route path="/news" element={<NewsPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/sdgs" element={<SdgListPage />} />
+        <Route path="/sdgs/:idOrNumber" element={<SdgDetailPage />} />
+        <Route path="/news" element={<NewsPage />} />
         <Route path="/news/:newsId" element={<NewsDetailPage />} />
-        <Route path="/insights/heatmap" element={<IndiaHeatmapPage />} />
-        <Route path="/redeem" element={<RedemptionStorePage />} />
+        <Route path="/insights/heatmap" element={<IndiaHeatmapPage />} />
+        <Route path="/redeem" element={<RedemptionStorePage />} />
 
-
-        {/* Protected routes */}
-        <Route element={<ProtectedRoute />}> {/* Wrap protected routes */}
-          <Route path="/profile" element={<ProfilePage/>} />
+        {/* Protected routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/my-courses" element={<EnrolledCoursesPage />} />
-          {/* Add other protected routes here, e.g., /dashboard, /settings */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
+        </Route>
 
-
-        {/* Admin Routes with AdminLayout and AdminProtectedRoute */}
-      <Route path="/admin" element={
-        <AdminProtectedRoute>
+        {/* Admin Routes with AdminLayout and AdminProtectedRoute */}
+        <Route path="/admin" element={
+          <AdminProtectedRoute>
           <AdminLayout /> 
         </AdminProtectedRoute>
       }>

@@ -1,4 +1,4 @@
-// src/components/store/RedemptionItemCard.jsx - MODERNIZED
+// src/components/store/RedemptionItemCard.jsx - UPDATED
 
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -16,22 +16,18 @@ const RedemptionItemCard = ({ item, onRedeem, isRedeeming }) => {
   const inStock = item.stock > 0;
   const canRedeem = isAuthenticated && canAfford && inStock;
 
+  const imageUrl = item.imageUrl || `https://picsum.photos/400/225?random=${item._id}`;
+
   return (
     <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 border shadow-sm group hover:shadow-lg hover:-translate-y-1">
       <CardHeader className="relative p-0 border-b">
-        {item.imageUrl ? (
-          <div className="overflow-hidden aspect-video">
-            <img
-                src={item.imageUrl}
-                alt={item.title}
-                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-              />
-          </div>
-        ) : (
-          <div className="flex items-center justify-center h-48 bg-slate-100 text-slate-400">
-            <PackageX className="w-12 h-12" />
-          </div>
-        )}
+        <div className="overflow-hidden aspect-video">
+          <img
+            src={imageUrl}
+            alt={item.title}
+            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
         {item.stock <= 0 && (
           <Badge variant="destructive" className="absolute text-xs top-2 left-2">Out of Stock</Badge>
         )}
@@ -40,10 +36,11 @@ const RedemptionItemCard = ({ item, onRedeem, isRedeeming }) => {
         )}
       </CardHeader>
       <CardContent className="flex-grow p-6">
-        <CardTitle className="mb-2 text-lg font-bold text-slate-900">
+        {/* UPDATED: Using theme-aware colors */}
+        <CardTitle className="mb-2 text-lg font-bold text-foreground">
           {item.title}
         </CardTitle>
-        <CardDescription className="text-sm text-slate-600 line-clamp-2">
+        <CardDescription className="text-sm text-muted-foreground line-clamp-2">
           {item.description}
         </CardDescription>
       </CardContent>

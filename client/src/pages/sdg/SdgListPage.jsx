@@ -46,20 +46,20 @@ const SdgListPage = () => {
 
   return (
     <div className="container py-8 mx-auto">
-      <section className="p-6 mb-12 rounded-lg bg-slate-50 border">
+      <section className="p-6 mb-12 rounded-lg bg-secondary border">
         <div className="flex flex-col md:flex-row justify-between items-start gap-6">
           <div className="flex-1">
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
+            <h1 className="text-4xl font-extrabold tracking-tight text-foreground">
               The 17 Goals
             </h1>
-            <p className="mt-2 text-slate-600 max-w-prose">
+            <p className="mt-2 text-muted-foreground max-w-prose">
               Explore the Sustainable Development Goals — a universal call to action to end poverty, protect the planet, and ensure that by 2030 all people enjoy peace and prosperity.
             </p>
           </div>
           <div className="flex items-center gap-2 w-full md:w-auto">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-              <Input type="search" placeholder="Search goals..." className="w-full pl-10 text-base outline:none" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Input type="search" placeholder="Search goals..." className="w-full pl-10 text-base" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
             </div>
             <Button variant="outline">
               <ListFilter className="w-4 h-4 mr-2" />
@@ -70,7 +70,7 @@ const SdgListPage = () => {
       </section>
 
       {filteredSdgs.length === 0 && !isLoading ? (
-        <div className="py-20 text-center text-slate-500">
+        <div className="py-20 text-center text-muted-foreground">
           <h3 className="text-2xl font-semibold">No Results Found</h3>
           <p className="mt-2">Try adjusting your search term.</p>
         </div>

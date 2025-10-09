@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useAuthStore from '@/store/authStore';
+import ThemeToggle from '../common/ThemeToggle';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,7 +30,7 @@ const Navbar = () => {
     : baseNavLinks;
 
   const activeLinkStyle = "bg-primary/10 text-primary";
-  const inactiveLinkStyle = "text-slate-700 hover:bg-primary/10 hover:text-primary";
+  const inactiveLinkStyle = "text-muted-foreground hover:bg-primary/10 hover:text-primary";
 
   return (
     // UPDATED: Added bg-background/90 and backdrop-blur-sm for a modern, transparent effect
@@ -37,45 +38,36 @@ const Navbar = () => {
       <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold transition-opacity text-primary hover:opacity-90" onClick={() => setIsMobileMenuOpen(false)}>
-              SustainED
-            </Link>
-          </div>
+            <Link to="/" className="text-2xl font-bold text-primary" onClick={() => setIsMobileMenuOpen(false)}>
+              SustainED
+            </Link>
+          </div>
 
           <div className="hidden md:flex md:items-center md:space-x-1">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                to={link.to}
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive ? activeLinkStyle : inactiveLinkStyle}`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </div>
+            {navLinks.map((link) => (
+              <NavLink key={link.to} to={link.to} className={({ isActive }) => `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive ? activeLinkStyle : inactiveLinkStyle}`}>
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
 
           <div className="hidden space-x-2 md:flex md:items-center">
-            {isAuthenticated ? (
-              <>
-                {user && <span className="hidden text-sm lg:inline">Hi, {user.username}!</span>}
-                <Button variant="ghost" asChild>
-                  <Link to="/profile">Profile</Link>
-                </Button>
-                <Button variant="outline" onClick={handleLogout}>Logout</Button>
-              </>
-            ) : (
-              <>
-                <Button variant="ghost" asChild>
-                  <Link to="/login">Login</Link>
-                </Button>
-                <Button variant="default" asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                  <Link to="/register">Register</Link>
-                </Button>
-              </>
-            )}
-          </div>
+            {isAuthenticated ? (
+              <>
+                {user && <span className="hidden text-sm font-medium text-muted-foreground lg:inline">Hi, {user.username}!</span>}
+                <Button variant="ghost" asChild><Link to="/profile">Profile</Link></Button>
+                <Button variant="outline" onClick={handleLogout}>Logout</Button>
+              </>
+            ) : (
+              <>
+                <Button variant="ghost" asChild><Link to="/login">Login</Link></Button>
+                <Button asChild><Link to="/register">Register</Link></Button>
+              </>
+            )}
+            <div className="ml-2">
+              <ThemeToggle />
+            </div>
+          </div>
 
           <div className="flex items-center md:hidden">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} type="button" className="inline-flex items-center justify-center p-2 rounded-md hover:bg-secondary focus:outline-none" aria-controls="mobile-menu" aria-expanded={isMobileMenuOpen}>
@@ -110,6 +102,9 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+            <div className="ml-2">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       )}

@@ -6,47 +6,54 @@
 
 @layer base {
   :root {
-    /* New, modern color palette with cool blues and professional grays */
-    --background: 0 0% 100%; /* Pure White */
-    --foreground: 224 71.4% 4.1%;
-    
+    /* LIGHT THEME (No changes here) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-
-    /* Primary color is now a confident, modern blue */
+    --popover-foreground: 222.2 84% 4.9%;
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
-
-    /* Secondary is a light, clean gray for card backgrounds */
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    
-    /* Muted text is a softer gray for better readability */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    /* Accent is a vibrant cyan for calls-to-action */
     --accent: 173 96% 42%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Optional: Define a dark theme */
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    /* ... define all other dark variables ... */
+    --background: 222 47.4% 11.2%;  /* Deep Navy Blue */
+    --foreground: 210 40% 98%;      /* Off-white */
+    --card: 222 47.4% 15.2%;         /* Slightly Lighter Navy for cards */
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* NEW: Vibrant, readable blue for dark mode */
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 210 40% 98%; /* White text on the blue button */
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 210 40% 80%;
+    
+    --accent: 217.2 91.2% 59.8%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -56,9 +63,14 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* --- FIX FOR READABILITY --- */
-    /* Use Tailwind's anti-aliasing for smoother fonts */
     @apply antialiased; 
+    background-image: radial-gradient(circle at top left, #f1f5f9, transparent),
+                      radial-gradient(circle at bottom right, #dbeafe, transparent);
+    background-size: 200% 200%;
+  }
+  .dark body {
+    background-image: radial-gradient(circle at top left, hsl(222.2 84% 6%), transparent),
+                      radial-gradient(circle at bottom right, hsl(217.2 91.2% 20%), transparent);
   }
 
   /* Increase readability for all paragraphs */

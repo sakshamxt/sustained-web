@@ -11,23 +11,15 @@ const getInitialUser = () => {
   try {
     const userString = localStorage.getItem('authUser');
 
-    // --- FIX START ---
-    // If the string from localStorage is null, 'undefined', or empty, return null immediately.
-    // This prevents the '.trim() on null' error.
     if (!userString || userString === 'undefined' || userString.trim() === '') {
-      // Clean up invalid entries from localStorage if they exist
-      if (userString) {
-        localStorage.removeItem('authUser');
-      }
+      if (userString) {
+        localStorage.removeItem('authUser');
+      }
       return null;
     }
-    // --- FIX END ---
-
-    // If the string is valid, parse it. The try/catch will handle JSON errors.
     return JSON.parse(userString);
   } catch (error) {
     console.error("Error processing authUser from localStorage:", error);
-    // Clean up any item that causes a parsing error
     localStorage.removeItem('authUser');
     return null;
   }
@@ -47,7 +39,6 @@ const useAuthStore = create((set, get) => ({
 
   /**
    * Internal helper to set user and token in state and localStorage.
-   * Ensures data is valid before setting.
    */
   _setUserAndToken: (userData, authToken) => {
     if (userData && typeof userData === 'object' && Object.keys(userData).length > 0 && authToken) {
@@ -100,8 +91,10 @@ const useAuthStore = create((set, get) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await apiClient.post('/auth/register', formData);
-      const { user, token } = response.data; // Assumes response is { user: {...}, token: "..." }
+      const { user, token } = response.data;
       get()._setUserAndToken(user, token);
+      // Also fetch full profile on register to be safe
+      await get().fetchUserProfile(true);
       return { success: true, user: get().user };
     } catch (err) {
       const errorMsg = err.response?.data?.message || err.message || 'Registration failed.';
@@ -117,22 +110,27 @@ const useAuthStore = create((set, get) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await apiClient.post('/auth/login', credentials);
-      const responseData = response.data;
-      const token = responseData.token;
+      const { token, ...userData } = response.data;
 
-      // Create user object by excluding the token property
-      const { token: _extractedToken, ...userData } = responseData;
-
+      // Set initial user and token
       get()._setUserAndToken(userData, token);
+
+      // --- THE FIX ---
+      // Immediately after logging in, call fetchUserProfile to get the 
+      // full, detailed user object, including all progress data.
+      await get().fetchUserProfile(true); 
+      // --- END FIX ---
 
       if (get().isAuthenticated) {
         return { success: true, user: get().user };
       } else {
-        return { success: false, error: "Login processed but data from server was insufficient to authenticate." };
+        // This case should ideally not be reached if _setUserAndToken is successful
+        throw new Error("Login processed but authentication failed.");
       }
     } catch (err) {
       const errorMsg = err.response?.data?.message || err.message || 'Login failed.';
       set({ isLoading: false, error: errorMsg });
+      get()._clearUserAndToken(); // Clear any partial auth state on failure
       return { success: false, error: errorMsg };
     }
   },
@@ -149,10 +147,11 @@ const useAuthStore = create((set, get) => ({
    */
   fetchUserProfile: async (forceFetch = false) => {
     const currentState = get();
+    // Fetch if forced, or if the user object is missing key data like progress.
     const shouldFetch = currentState.isAuthenticated && (forceFetch || !currentState.user || !currentState.user.progressBySdg);
 
     if (!shouldFetch) {
-      return { success: currentState.isAuthenticated && !!currentState.user, user: currentState.user, error: currentState.error };
+      return { success: true, user: currentState.user };
     }
 
     set({ isLoading: true, error: null });
@@ -161,9 +160,9 @@ const useAuthStore = create((set, get) => ({
       const apiUserData = response.data.user || response.data;
 
       if (apiUserData && typeof apiUserData === 'object' && Object.keys(apiUserData).length > 0) {
-        get().setUser(apiUserData); // Use setUser to ensure consistent update logic
-        set({ isLoading: false }); // setUser doesn't handle loading state
-        return { success: true, user: apiUserData };
+        get().setUser(apiUserData); // Use setUser to merge and save to localStorage
+        set({ isLoading: false }); 
+        return { success: true, user: get().user };
       } else {
         throw new Error("Invalid user data received from /users/me");
       }
@@ -171,10 +170,9 @@ const useAuthStore = create((set, get) => ({
       const errorMsg = err.response?.data?.message || err.message || 'Failed to fetch user profile.';
       console.error("Fetch User Profile error:", err);
       if (err.response?.status === 401 || err.response?.status === 403) {
-        get()._clearUserAndToken();
-      } else {
-        set({ isLoading: false, error: errorMsg });
+        get()._clearUserAndToken(); // If token is invalid, log the user out
       }
+      set({ isLoading: false, error: errorMsg });
       return { success: false, error: errorMsg };
     }
   },
