@@ -67,7 +67,7 @@ const LoginPage = () => {
   // If user is already authenticated, redirect them from login page
   useEffect(() => {
     if (isAuthenticated) {
-      const from = location.state?.from?.pathname || "/";
+      const from = location.state?.from?.pathname || "/my-courses";
       navigate(from, { replace: true });
     }
   }, [isAuthenticated, navigate, location.state]);

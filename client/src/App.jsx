@@ -15,6 +15,7 @@ import ProfilePage from './pages/user/ProfilePage';
 import EnrolledCoursesPage from './pages/user/EnrolledCoursesPage';
 import IndiaHeatmapPage from './pages/insights/IndiaHeatmapPage';
 import RedemptionStorePage from './pages/store/RedemptionStorePage';
+import ChatbotPopup from './components/chat/ChatbotPopup';
 
 import AdminProtectedRoute from './components/auth/AdminProtectedRoute';
 import AdminLayout from './components/layout/AdminLayout';
@@ -82,6 +83,7 @@ function App() {
       </Route>
 
       </Routes>
+      <ChatbotPopup />
     </MainLayout>
   );
 }

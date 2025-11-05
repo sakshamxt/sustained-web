@@ -1,429 +1,765 @@
 // server/data/sampleSDGs.js
 
 const sdgs = [
-  // SDG 1: No Poverty
   {
-    sdgNumber: 1,
-    title: "No Poverty",
-    shortDescription: "End poverty in all its forms everywhere.",
-    whatYouWillLearn: [
-      "Understand the multifaceted nature of poverty.",
-      "Analyze strategies and policies for poverty reduction.",
-      "Explore global and local poverty challenges and solutions."
+    "sdgNumber": 1,
+    "title": "No Poverty",
+    "shortDescription": "End poverty in all its forms everywhere.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/06/58/92/61/1000_F_658926136_ANn7FRIggCKxLXSwgif0JVgIyV0b34Sm.jpg",
+    "whatYouWillLearn": [
+      "The difference between relative and extreme poverty.",
+      "How poverty is measured globally by organizations like the World Bank.",
+      "The interconnected nature of poverty with hunger, health, and education.",
+      "Key strategies and social protection systems used to eradicate poverty."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/06/58/92/61/1000_F_658926136_ANn7FRIggCKxLXSwgif0JVgIyV0b34Sm.jpg`,
-    fullDescription: "Globally, the number of people living in extreme poverty declined by more than half between 1990 and 2015. Still, about 736 million people lived on less than US$1.90 a day in 2015. This SDG aims to eradicate extreme poverty for all people everywhere and to reduce at least by half the proportion of men, women, and children of all ages living in poverty in all its dimensions according to national definitions.",
-    presentations: [
-      { title: "Understanding Global Poverty", urlOrContent: "placeholder_url/content_sdg1_pres1" },
-      { title: "Poverty Reduction Strategies", urlOrContent: "placeholder_url/content_sdg1_pres2" }
+    "fullDescription": "Globally, the number of people living in extreme poverty declined by more than half between 1990 and 2015. Still, about 736 million people lived on less than US$1.90 a day in 2015.\nThis SDG is a call to action to eradicate extreme poverty for all people everywhere by 2030 and to reduce at least by half the proportion of men, women, and children of all ages living in poverty in all its dimensions.",
+    "lessons": [
+      {
+        "title": "Lesson 1: What is Extreme Poverty?",
+        "content": "Extreme poverty is defined as living on less than $2.15 per day. This lesson explores the global definition of poverty and how it is measured. We will also discuss 'relative poverty,' which is defined in relation to the average income of a specific country.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: The Dimensions of Poverty",
+        "content": "Poverty is more than just a lack of income. The Multidimensional Poverty Index (MPI) measures poverty across three key dimensions: health, education, and standard of living. This lesson explores how these factors overlap.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Social Protection Systems",
+        "content": "To eradicate poverty, we need strong social safety nets. This includes cash benefits for the elderly, unemployment insurance, and support for families with children. We will explore how these systems help build resilience.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Defining and Measuring Poverty", content: "Detailed text on poverty metrics and definitions...", type: "text" },
-      { title: "Case Study: Successful Poverty Alleviation", content: "Video_url_or_text_content", type: "video_case_study" }
+    "presentations": [
+      {
+        "title": "Presentation: The State of Global Poverty 2024",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-1.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Research Local Poverty Initiatives", description: "Identify and report on organizations tackling poverty in your community.", submissionType: "report" },
-      { title: "Debate: Universal Basic Income", description: "Prepare arguments for or against UBI as a poverty solution.", submissionType: "debate_notes" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Research Local Poverty Initiatives",
+        "description": "Find one organization in your state or country that is working to fight poverty. In the text box, write its name and 1-2 sentences about its mission.",
+        "submissionType": "textResponse" 
+      },
+      {
+        "title": "Activity: The $2-a-Day Challenge (Reflection)",
+        "description": "Read an article about what it's like to live on less than $2.15 a day. After reading, mark this activity as complete and reflect on the challenges discussed.",
+        "submissionType": "none"
+      }
     ]
   },
-  // SDG 2: Zero Hunger
   {
-    sdgNumber: 2,
-    title: "Zero Hunger",
-    shortDescription: "End hunger, achieve food security and improved nutrition and promote sustainable agriculture.",
-    whatYouWillLearn: [
-      "Identify the causes and consequences of hunger and malnutrition.",
-      "Learn about sustainable agricultural practices for food security.",
-      "Analyze global efforts to achieve zero hunger."
+    "sdgNumber": 2,
+    "title": "Zero Hunger",
+    "shortDescription": "End hunger, achieve food security and improved nutrition and promote sustainable agriculture.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/06/58/92/56/1000_F_658925612_cMFd6kQ6H5CXGZeUmUe8Few0QiFBu7xk.jpg",
+    "whatYouWillLearn": [
+      "The difference between hunger and malnutrition.",
+      "What sustainable agriculture means and why it's important.",
+      "The massive impact of global food waste.",
+      "How climate change affects food security."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/06/58/92/56/1000_F_658925612_cMFd6kQ6H5CXGZeUmUe8Few0QiFBu7xk.jpg`,
-    fullDescription: "After decades of steady decline, the number of people who suffer from hunger – as measured by the prevalence of undernourishment – began to slowly increase again in 2015. Current estimates show that nearly 690 million people are hungry, or 8.9 percent of the world population. This SDG aims to end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round.",
-    presentations: [
-      { title: "The Global Food Crisis", urlOrContent: "placeholder_url/content_sdg2_pres1" },
-      { title: "Sustainable Agriculture Explained", urlOrContent: "placeholder_url/content_sdg2_pres2" }
+    "fullDescription": "The world is not on track to end hunger by 2030. After decades of decline, the number of people suffering from hunger has been slowly increasing since 2015. An estimated 821 million people were undernourished in 2017.\nThis goal aims to end all forms of hunger and malnutrition, ensuring all people—especially children—have access to sufficient and nutritious food all year round by promoting sustainable agricultural practices.",
+    "lessons": [
+      {
+        "title": "Lesson 1: Hunger vs. Malnutrition",
+        "content": "Hunger is the distress associated with a lack of food. Malnutrition is a broader term, referring to deficiencies, excesses, or imbalances in a person's intake of energy and/or nutrients. This lesson explores both.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: What is Sustainable Agriculture?",
+        "content": "Sustainable agriculture means farming in a way that meets the needs of today without compromising the ability of future generations to meet their own needs. It focuses on soil health, water conservation, and biodiversity.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: The Problem of Food Waste",
+        "content": "Globally, it is estimated that one-third of all food produced is lost or wasted. This lesson examines where this waste occurs (from farm to table) and what simple solutions can be implemented to reduce it.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Understanding Malnutrition", content: "Text content on different forms of malnutrition and their impacts...", type: "text" },
-      { title: "Innovation in Farming", content: "Exploring new technologies in sustainable agriculture...", type: "text_with_images" }
+    "presentations": [
+      {
+        "title": "Presentation: The Global Food Security Index",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-2.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Plan a Balanced Meal on a Budget", description: "Design a weekly meal plan that is nutritious and affordable for a low-income family.", submissionType: "meal_plan" },
-      { title: "Investigate Food Waste", description: "Track your household food waste for a week and suggest reduction strategies.", submissionType: "report_and_plan" }
+    "practicalActivities": [
+      {
+        "title": "Activity: My Weekly Food Waste",
+        "description": "For one day, try to keep a small log of any food you throw away (e.g., uneaten leftovers, spoiled fruit). In the box, reflect on one change you could make to reduce this waste.",
+        "submissionType": "textResponse" 
+      }
     ]
   },
-  // SDG 3: Good Health and Well-being
   {
-    sdgNumber: 3,
-    title: "Good Health and Well-being",
-    shortDescription: "Ensure healthy lives and promote well-being for all at all ages.",
-    whatYouWillLearn: [
-      "Understand key global health challenges and determinants of health.",
-      "Learn about strategies for disease prevention and health promotion.",
-      "Explore the importance of mental health and well-being."
+    "sdgNumber": 3,
+    "title": "Good Health and Well-being",
+    "shortDescription": "Ensure healthy lives and promote well-being for all at all ages.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/15/67/38/34/1000_F_1567383468_yJGpVhJS83WXzA2tAtrA13T55R2d2g4Z.jpg",
+    "whatYouWillLearn": [
+      "Key challenges in global health, including maternal and child mortality.",
+      "The importance of universal health coverage (UHC).",
+      "Strategies for promoting mental and physical well-being.",
+      "The fight against communicable diseases like AIDS, tuberculosis, and malaria."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/15/67/38/34/1000_F_1567383468_yJGpVhJS83WXzA2tAtrA13T55R2d2g4Z.jpg`,
-    fullDescription: "Ensuring healthy lives and promoting well-being at all ages is essential to sustainable development. Significant strides have been made in increasing life expectancy and reducing some of the common killers associated with child and maternal mortality. However, more efforts are needed to fully eradicate a wide range of diseases and address many different persistent and emerging health issues.",
-    presentations: [
-      { title: "Global Health Issues Overview", urlOrContent: "placeholder_url/content_sdg3_pres1" },
-      { title: "The Importance of Vaccinations", urlOrContent: "placeholder_url/content_sdg3_pres2" }
+    "fullDescription": "This goal aims to ensure healthy lives and promote well-being for all, at all ages. Key targets include reducing the global maternal mortality ratio, ending all preventable deaths of newborns and children under 5 years of age, and ending the epidemics of AIDS, tuberculosis, malaria, and other communicable diseases.\nAchieving this goal is interconnected with many other SDGs, including poverty reduction, zero hunger, and clean water.",
+    "lessons": [
+      {
+        "title": "Lesson 1: Understanding Universal Health Coverage (UHC)",
+        "content": "Universal Health Coverage means that all people have access to the full range of quality health services they need, when and where they need them, without financial hardship. This lesson covers the core components of UHC and why it is the foundation for global health.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: The Fight Against Communicable Diseases",
+        "content": "This lesson focuses on the progress and remaining challenges in combating HIV/AIDS, tuberculosis (TB), and malaria. We will explore the tools used, from antiviral therapy to insecticide-treated mosquito nets, and the importance of continued global funding.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Mental Health as a Global Priority",
+        "content": "Good health includes mental well-being. This lesson discusses the global burden of mental health disorders, the stigma surrounding them, and the importance of integrating mental health services into primary healthcare.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Understanding Communicable Diseases", content: "Text about common infectious diseases and prevention...", type: "text" },
-      { title: "Mental Health Awareness", content: "An introduction to mental health, stigma, and support systems...", type: "text_and_video" }
+    "presentations": [
+      {
+        "title": "Presentation: Global Health Statistics (WHO)",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-3.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Design a Health Promotion Campaign", description: "Develop a campaign concept for a local health issue (e.g., hygiene, exercise).", submissionType: "campaign_proposal" },
-      { title: "Track Your Physical Activity", description: "Monitor your physical activity for a week and reflect on its impact on your well-being.", submissionType: "activity_log_reflection" }
+    "practicalActivities": [
+      {
+        "title": "Activity: 5-Minute Mindfulness",
+        "description": "Mental well-being is a key part of this SDG. Take five minutes to follow a guided mindfulness or breathing exercise (you can find many on YouTube). Mark this as complete once you are done.",
+        "submissionType": "none"
+      },
+      {
+        "title": "Activity: Local Health Access",
+        "description": "Identify the closest public health clinic or hospital to your location. What services does it provide? Write 1-2 sentences about the importance of having such a facility in your community.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 4: Quality Education
   {
-    sdgNumber: 4,
-    title: "Quality Education",
-    shortDescription: "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.",
-    whatYouWillLearn: [
-      "Understand the importance of inclusive and equitable education.",
-      "Learn about challenges and innovations in global education.",
-      "Explore the concept of lifelong learning and its benefits."
+    "sdgNumber": 4,
+    "title": "Quality Education",
+    "shortDescription": "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/06/58/92/61/1000_F_658926136_ANn7FRIggCKxLXSwgif0JVgIyV0b34Sm.jpg",
+    "whatYouWillLearn": [
+      "Barriers to education, especially for girls and children in conflict zones.",
+      "The definition of 'inclusive and equitable' education.",
+      "The importance of lifelong learning in a changing job market.",
+      "How quality education impacts all other SDGs."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/06/58/92/61/1000_F_658926136_ANn7FRIggCKxLXSwgif0JVgIyV0b34Sm.jpg`,
-    fullDescription: "Education enables upward socioeconomic mobility and is a key to escaping poverty. Over the past decade, major progress was made towards increasing access to education and school enrollment rates at all levels, particularly for girls. Nevertheless, about 260 million children were still out of school in 2018 — nearly one fifth of the global population in that age group. This SDG aims to ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes.",
-    presentations: [
-      { title: "Barriers to Education Worldwide", urlOrContent: "placeholder_url/content_sdg4_pres1" },
-      { title: "The Future of Learning Technologies", urlOrContent: "placeholder_url/content_sdg4_pres2" }
+    "fullDescription": "Education is a key that unlocks many other sustainable development goals. This goal aims to ensure that all girls and boys complete free, equitable, and quality primary and secondary education. It also aims to provide equal access to affordable vocational training and to eliminate gender and wealth disparities in education.\nAchieving inclusive and quality education for all reaffirms the belief that education is one of the most powerful and proven vehicles for sustainable development.",
+    "lessons": [
+      {
+        "title": "Lesson 1: Barriers to Education",
+        "content": "Why are millions of children still out of school? This lesson explores the primary barriers, including poverty, gender discrimination, remote location, and living in a conflict zone. We will discuss how these factors create cycles that are difficult to break.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: What is 'Inclusive' Education?",
+        "content": "Inclusive education means all children are in the same classrooms, in the same schools. It means real learning opportunities for groups who have traditionally been excluded – not only children with disabilities, but speakers of minority languages too. This lesson explores the importance of truly inclusive systems.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Lifelong Learning for a Modern World",
+        "content": "Education doesn't end with a diploma. In a rapidly changing world with new technologies, 'lifelong learning' is essential. This includes adult education, vocational training, and developing skills for new 'green' and digital jobs.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Inclusive Education Practices", content: "Strategies for creating inclusive learning environments...", type: "text" },
-      { title: "The Role of EdTech", content: "Exploring how technology is shaping education...", type: "interactive_module_link" }
+    "presentations": [
+      {
+        "title": "Presentation: The State of Global Education (UNESCO)",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-4.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Tutor or Mentor a Younger Student", description: "Volunteer to help a student with their studies.", submissionType: "activity_report" },
-      { title: "Research a Global Education Initiative", description: "Investigate and present on an organization working to improve education access.", submissionType: "presentation_slides" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Share a Skill",
+        "description": "Lifelong learning includes sharing knowledge. Think of one skill you have (coding, cooking, a math concept, a craft) and briefly explain how you would teach it to someone in 3 simple steps.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 5: Gender Equality
   {
-    sdgNumber: 5,
-    title: "Gender Equality",
-    shortDescription: "Achieve gender equality and empower all women and girls.",
-    whatYouWillLearn: [
-      "Understand the concepts of gender, gender equality, and gender-based discrimination.",
-      "Learn about the challenges women and girls face globally.",
-      "Explore strategies to promote gender equality and women's empowerment."
+    "sdgNumber": 5,
+    "title": "Gender Equality",
+    "shortDescription": "Achieve gender equality and empower all women and girls.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/02/28/33/75/1000_F_228337582_9lk0i0LlBuEgINqdWBxvYK9GSMENMzUM.jpg",
+    "whatYouWillLearn": [
+      "The forms of discrimination and violence women and girls face.",
+      "The importance of women's full participation in leadership and public life.",
+      "The concept of 'unpaid care work' and its economic impact.",
+      "How to ensure universal access to sexual and reproductive health."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/02/28/33/75/1000_F_228337582_9lk0i0LlBuEgINqdWBxvYK9GSMENMzUM.jpg`,
-    fullDescription: "Gender equality is not only a fundamental human right, but a necessary foundation for a peaceful, prosperous and sustainable world. Providing women and girls with equal access to education, health care, decent work, and representation in political and economic decision-making processes will fuel sustainable economies and benefit societies and humanity at large.",
-    presentations: [
-      { title: "Understanding Gender Bias", urlOrContent: "placeholder_url/content_sdg5_pres1" },
-      { title: "Women in Leadership", urlOrContent: "placeholder_url/content_sdg5_pres2" }
+    "fullDescription": "Gender equality is not only a fundamental human right, but a necessary foundation for a peaceful, prosperous, and sustainable world. This goal aims to end all forms of discrimination against women and girls, eliminate violence in public and private spheres, and ensure women's full participation in political, economic, and public life.\nDespite progress, many challenges remain: discriminatory laws and social norms, underrepresentation in political leadership, and the high prevalence of violence against women.",
+    "lessons": [
+      {
+        "title": "Lesson 1: Discrimination and Violence",
+        "content": "This lesson explores the root causes of gender-based violence and discrimination. We will discuss harmful practices, social norms, and the legal gaps that fail to protect women and girls worldwide.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: Women in Leadership",
+        "content": "Why is it important to have women in parliament, in the boardroom, and in leadership roles? This lesson covers the benefits of women's equal participation in decision-making and the barriers that still exist.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Unpaid Care and Domestic Work",
+        "content": "Globally, women perform a disproportionate share of unpaid domestic and care work. This lesson examines how this 'hidden' work impacts women's economic opportunities, health, and well-being, and what can be done to recognize, reduce, and redistribute it.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "The History of Women's Rights", content: "Key milestones in the fight for gender equality...", type: "timeline_text" },
-      { title: "Challenging Gender Stereotypes", content: "Discussion on identifying and challenging stereotypes...", type: "interactive_discussion_guide" }
+    "presentations": [
+      {
+        "title": "Presentation: Gender Equality by the Numbers",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-5.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Interview an Inspiring Woman", description: "Conduct an interview with a woman leader or role model in your community or field of interest.", submissionType: "interview_summary" },
-      { title: "Analyze Media for Gender Representation", description: "Critically examine how genders are portrayed in a chosen piece of media (movie, ad, news).", submissionType: "media_analysis_report" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Recognizing Unpaid Work",
+        "description": "For one day, try to estimate the hours you and your family members spend on unpaid tasks (e.g., cooking, cleaning, child care). In the text box, reflect on whether this work is shared equally.",
+        "submissionType": "textResponse"
+      },
+      {
+        "title": "Activity: Identify a Female Leader",
+        "description": "Find a woman in a leadership position (in your community, country, or a global company) who inspires you. Write her name and one sentence about why you admire her leadership.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 6: Clean Water and Sanitation
   {
-    sdgNumber: 6,
-    title: "Clean Water and Sanitation",
-    shortDescription: "Ensure availability and sustainable management of water and sanitation for all.",
-    whatYouWillLearn: [
-      "Understand the global water crisis and its impact.",
-      "Learn about water conservation and sustainable water management practices.",
-      "Explore the importance of sanitation and hygiene (WASH)."
+    "sdgNumber": 6,
+    "title": "Clean Water and Sanitation",
+    "shortDescription": "Ensure availability and sustainable management of water and sanitation for all.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/16/96/89/16/1000_F_1696891654_qPvHrHpGjwUzA1tD78Sj45x2dxERFLCD.jpg",
+    "whatYouWillLearn": [
+      "The global scale of water scarcity and its causes.",
+      "The link between sanitation, hygiene, and public health (WASH).",
+      "What 'Integrated Water Resources Management' means.",
+      "The importance of protecting water-related ecosystems like forests and mountains."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/96/89/16/1000_F_1696891654_qPvHrHpGjwUzA1tD78Sj45x2dxERFLCD.jpg`,
-    fullDescription: "Access to safe water, sanitation and hygiene is the most basic human need for health and well-being. Billions of people will lack access to these basic services in 2030 unless progress quadruples. Demand for water is rising owing to rapid population growth, urbanization and increasing water needs from agriculture, industry, and energy sectors.",
-    presentations: [
-      { title: "The World's Water Resources", urlOrContent: "placeholder_url/content_sdg6_pres1" },
-      { title: "Water, Sanitation, and Hygiene (WASH) Link", urlOrContent: "placeholder_url/content_sdg6_pres2" }
+    "fullDescription": "Safe and affordable drinking water for all is a basic human right. Yet, billions of people worldwide still lack access to safely managed drinking water and sanitation services. This goal aims to achieve universal access to safe drinking water, sanitation, and hygiene (WASH).\nIt also addresses the quality and sustainability of water resources, which are critical for economic growth, food security, and environmental health.",
+    "lessons": [
+      {
+        "title": "Lesson 1: The Global Water Crisis",
+        "content": "Water scarcity affects more than 40% of the global population. This lesson explores the difference between physical water scarcity (lack of water) and economic water scarcity (lack of infrastructure to get water).",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: The Importance of WASH",
+        "content": "WASH stands for Water, Sanitation, and Hygiene. The lack of these basic services is a primary cause of diseases like cholera and diarrhea. We'll explore how simple interventions, like hand-washing stations, can save millions of lives.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Protecting Water Ecosystems",
+        "content": "Where does our fresh water come from? This lesson covers the importance of protecting and restoring water-related ecosystems, including mountains, forests, wetlands, and rivers, to ensure water quality and sustainability.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "The Water Cycle and Human Impact", content: "Understanding how human activities affect water resources...", type: "text_diagrams" },
-      { title: "Water Purification Techniques", content: "Overview of different methods for making water safe...", type: "text_video_demos" }
+    "presentations": [
+      {
+        "title": "Presentation: Water and Sanitation Facts",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-6.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Calculate Your Water Footprint", description: "Use an online tool to calculate your personal or household water footprint and identify ways to reduce it.", submissionType: "footprint_report_action_plan" },
-      { title: "Design a Rainwater Harvesting System", description: "Sketch a basic design for a rainwater harvesting system for a home or community building.", submissionType: "design_sketch_explanation" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Your Personal Water Footprint",
+        "description": "Use an online calculator (like watercalculator.org) to estimate your daily water footprint. In the text box, share one thing you learned or one way you could reduce your water use.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 7: Affordable and Clean Energy
   {
-    sdgNumber: 7,
-    title: "Affordable and Clean Energy",
-    shortDescription: "Ensure access to affordable, reliable, sustainable and modern energy for all.",
-    whatYouWillLearn: [
-      "Understand the global energy landscape and challenges.",
-      "Learn about various renewable energy sources and technologies.",
-      "Explore the importance of energy efficiency and conservation."
+    "sdgNumber": 7,
+    "title": "Affordable and Clean Energy",
+    "shortDescription": "Ensure access to affordable, reliable, sustainable and modern energy for all.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/14/31/58/75/1000_F_1431587525_FUZ5eFE74Q8e249CUsMxEnw2VYrrzWus.jpg",
+    "whatYouWillLearn": [
+      "The link between energy access and poverty reduction.",
+      "The difference between renewable energy sources (solar, wind) and clean energy.",
+      "What 'energy efficiency' means and why it's crucial.",
+      "The challenges in transitioning from fossil fuels to renewable energy."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/14/31/58/75/1000_F_1431587525_FUZ5eFE74Q8e249CUsMxEnw2VYrrzWus.jpg`,
-    fullDescription: "Access to affordable, reliable, sustainable and modern energy is a cornerstone of development. Yet, 759 million people lack access to electricity, and one-third of the world’s population relies on dangerous and inefficient cooking systems. This SDG aims to ensure universal access to affordable, reliable and modern energy services, increase substantially the share of renewable energy in the global energy mix, and double the global rate of improvement in energy efficiency.",
-    presentations: [
-      { title: "Introduction to Renewable Energy Sources", urlOrContent: "placeholder_url/content_sdg7_pres1" },
-      { title: "The Future of Energy Grids", urlOrContent: "placeholder_url/content_sdg7_pres2" }
+    "fullDescription": "Energy is central to nearly every major challenge and opportunity, from job creation and security to climate change and food production. This goal aims to ensure universal access to affordable, reliable, and modern energy.\nA key objective is to substantially increase the share of renewable energy in the global energy mix and to double the rate of improvement in energy efficiency.",
+    "lessons": [
+      {
+        "title": "Lesson 1: Energy Access and Development",
+        "content": "Access to electricity and clean cooking fuels is life-changing. It enables children to study at night, businesses to operate, and clinics to store vaccines. This lesson explores the concept of 'energy poverty'.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: Renewable Energy Sources 101",
+        "content": "What's the difference between solar, wind, geothermal, and hydropower? This lesson provides a simple overview of the major types of renewable energy and their pros and cons.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: The Power of Energy Efficiency",
+        "content": "The cheapest and cleanest energy is the energy we don't use. 'Energy efficiency' means using less energy to perform the same task. This lesson covers simple solutions like LED lighting and better building insulation.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Solar Power Fundamentals", content: "How solar panels work and their applications...", type: "text_animation" },
-      { title: "Energy Conservation at Home", content: "Practical tips for reducing energy consumption...", type: "checklist_guide" }
+    "presentations": [
+      {
+        "title": "Presentation: Global Energy Statistics",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-7.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Home Energy Audit", description: "Conduct a simple energy audit of your home and identify areas for improvement.", submissionType: "audit_report" },
-      { title: "Research a Renewable Energy Technology", description: "Prepare a short report or presentation on a specific renewable energy technology (e.g., wind, geothermal, tidal).", submissionType: "report_or_slides" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Home Energy Audit",
+        "description": "Look around your home for 5 minutes. Identify one device that uses electricity even when it's 'off' (a 'vampire load'), like a TV on standby. Mark this as complete when you've found one.",
+        "submissionType": "none"
+      },
+      {
+        "title": "Activity: Research a Renewable Energy",
+        "description": "Choose one renewable energy source (solar, wind, etc.). In the text box, write one interesting fact you learned about it.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 8: Decent Work and Economic Growth
   {
-    sdgNumber: 8,
-    title: "Decent Work and Economic Growth",
-    shortDescription: "Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.",
-    whatYouWillLearn: [
-      "Understand the principles of sustainable and inclusive economic growth.",
-      "Learn about challenges in the global labor market, including youth employment and informal work.",
-      "Explore the concept of 'decent work' and its components."
+    "sdgNumber": 8,
+    "title": "Decent Work and Economic Growth",
+    "shortDescription": "Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/10/33/06/20/1000_F_1033062034_8ZEBjFHFOLet9SGko8zOrzu486GLrt0V.jpg",
+    "whatYouWillLearn": [
+      "The definition of 'decent work' and its four pillars.",
+      "The challenges of youth unemployment and the informal economy.",
+      "The link between economic growth and environmental impact.",
+      "The importance of protecting labor rights and ending modern slavery."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/10/33/06/20/1000_F_1033062034_8ZEBjFHFOLet9SGko8zOrzu486GLrt0V.jpg`,
-    fullDescription: "Sustained and inclusive economic growth can drive progress, create decent jobs for all and improve living standards. The COVID-19 pandemic has disrupted billions of lives and endangered the global economy. This SDG aims to sustain per capita economic growth in accordance with national circumstances and, in particular, at least 7 per cent gross domestic product growth per annum in the least developed countries.",
-    presentations: [
-      { title: "Global Economic Trends", urlOrContent: "placeholder_url/content_sdg8_pres1" },
-      { title: "The Gig Economy: Pros and Cons", urlOrContent: "placeholder_url/content_sdg8_pres2" }
+    "fullDescription": "This goal is about promoting sustained, inclusive, and sustainable economic growth. It aims to achieve full and productive employment and 'decent work' for all, including women, youth, and persons with disabilities.\nIt also focuses on 'decoupling' economic growth from environmental degradation, which is a key challenge for the 21st century.",
+    "lessons": [
+      {
+        "title": "Lesson 1: What is 'Decent Work'?",
+        "content": "Decent work involves opportunities for work that is productive and delivers a fair income, security in the workplace, and social protection for families. This lesson explores the four pillars: employment, rights, social protection, and social dialogue.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: The Informal Economy",
+        "content": "Over 60% of the world's employed population works in the informal economy (jobs without contracts, legal protection, or benefits). This lesson discusses the risks of informal work and how to formalize these jobs.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Ending Modern Slavery",
+        "content": "This lesson addresses the dark side of the global economy: forced labor, human trafficking, and child labor. We will learn about Target 8.7, which calls for the eradication of these practices.",
+        "type":"text"
+      }
     ],
-    lessons: [
-      { title: "Understanding Fair Labor Practices", content: "What constitutes fair wages, safe working conditions, and rights at work...", type: "text_case_studies" },
-      { title: "Entrepreneurship and Job Creation", content: "The role of small businesses and startups in economic growth...", type: "text_interviews" }
+    "presentations": [
+      {
+        "title": "Presentation: Decent Work & Economic Growth Facts",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-8.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Develop a Business Idea", description: "Outline a simple business plan for a small, sustainable enterprise.", submissionType: "business_outline" },
-      { title: "Analyze Job Market Trends", description: "Research current job market trends in a chosen industry and report on skills in demand.", submissionType: "report" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Check Your Labels",
+        "description": "Look at the labels on 3-5 items of clothing you own. Where were they made? Many global supply chains are complex. In the text box, list two countries you found.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 9: Industry, Innovation and Infrastructure
   {
-    sdgNumber: 9,
-    title: "Industry, Innovation and Infrastructure",
-    shortDescription: "Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation.",
-    whatYouWillLearn: [
-      "Understand the role of infrastructure, industry, and innovation in sustainable development.",
-      "Learn about challenges and opportunities in developing sustainable infrastructure.",
-      "Explore the importance of research, development, and technological innovation."
+    "sdgNumber": 9,
+    "title": "Industry, Innovation and Infrastructure",
+    "shortDescription": "Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/13/41/74/37/1000_F_1341743702_EoBWD4578gAQFIWJSxZzzucbkpm2sIdf.jpg",
+    "whatYouWillLearn": [
+      "The role of infrastructure (transport, energy, IT) in a country's development.",
+      "The concept of 'sustainable industrialization' and its benefits.",
+      "Why innovation and technological progress are critical for sustainable development.",
+      "The 'digital divide' and the importance of universal internet access."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/13/41/74/37/1000_F_1341743702_EoBWD4578gAQFIWJSxZzzucbkpm2sIdf.jpg`,
-    fullDescription: "Inclusive and sustainable industrialization, together with innovation and infrastructure, can unleash dynamic and competitive economic forces that generate employment and income. They play a key role in introducing and promoting new technologies, facilitating international trade and enabling the efficient use of resources.",
-    presentations: [
-      { title: "Sustainable Infrastructure Projects", urlOrContent: "placeholder_url/content_sdg9_pres1" },
-      { title: "The Fourth Industrial Revolution (Industry 4.0)", urlOrContent: "placeholder_url/content_sdg9_pres2" }
+    "fullDescription": "Investment in infrastructure—transport, irrigation, energy, and information technology—is crucial for sustainable development. This goal aims to build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation.\nIt emphasizes the need for technological progress to find lasting solutions to both economic and environmental challenges, such as creating new jobs and improving energy efficiency. Sustainable infrastructure is key to empowering communities and building a more prosperous future.",
+    "lessons": [
+      {
+        "title": "Lesson 1: The Three Pillars of SDG 9",
+        "content": "This goal is built on three interconnected pillars: resilient infrastructure, inclusive industrialization, and fostering innovation. This lesson explains what each pillar means and why they must be developed together.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: What is 'Sustainable Industrialization'?",
+        "content": "This concept involves upgrading industries to make them sustainable, with increased resource-use efficiency and greater adoption of clean technologies. It's not just about building factories, but building *better*, greener, and more equitable factories.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Bridging the Digital Divide",
+        "content": "A major part of modern infrastructure is internet access. The 'digital divide' refers to the gap between those who have access to information technology and those who do not. This lesson explores why closing this gap is essential for education, economic opportunity, and innovation.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Innovation for Development", content: "How technological and social innovations can solve development challenges...", type: "text_examples" },
-      { title: "Smart Cities: Concept and Technologies", content: "An overview of how technology is shaping urban environments...", type: "text_video_module" }
+    "presentations": [
+      {
+        "title": "Presentation: Infrastructure and Industrialization Facts",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-9.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Propose an Innovative Solution", description: "Identify a local problem and propose an innovative technological or process-based solution.", submissionType: "proposal" },
-      { title: "Map Local Infrastructure", description: "Create a map or report on the state of a specific type of infrastructure (e.g., transport, internet access) in your community.", submissionType: "map_report" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Identify Local Infrastructure",
+        "description": "Think about the infrastructure you use every day (roads, internet, electricity, water pipes). In the text box, name one piece of infrastructure you rely on and one way your life would be different without it.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 10: Reduced Inequalities
   {
-    sdgNumber: 10,
-    title: "Reduced Inequalities",
-    shortDescription: "Reduce inequality within and among countries.",
-    whatYouWillLearn: [
-      "Understand the different dimensions of inequality (income, gender, age, disability, etc.).",
-      "Learn about the causes and consequences of inequality.",
-      "Explore policies and actions to reduce inequalities."
+    "sdgNumber": 10,
+    "title": "Reduced Inequalities",
+    "shortDescription": "Reduce inequality within and among countries.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/10/46/86/99/1000_F_1046869928_K5bCcYHRNz9sCMGRM2Y6Hf5JMTDAxq75.jpg",
+    "whatYouWillLearn": [
+      "The difference between income inequality and inequality of opportunity.",
+      "How social, economic, and political inequalities are measured.",
+      "The impact of inequality on social cohesion and economic growth.",
+      "Policies that can reduce inequality, such as progressive taxation and social protection."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/10/46/86/99/1000_F_1046869928_K5bCcYHRNz9sCMGRM2Y6Hf5JMTDAxq75.jpg`,
-    fullDescription: "Inequality within and among countries is a persistent cause for concern. While income inequality between countries may have reduced, inequality within countries has risen. There is growing consensus that economic growth is not sufﬁcient to reduce poverty if it is not inclusive and if it does not involve the three dimensions of sustainable development – economic, social and environmental.",
-    presentations: [
-      { title: "Measuring Inequality: Gini Coefficient and Beyond", urlOrContent: "placeholder_url/content_sdg10_pres1" },
-      { title: "Social Justice Movements and Inequality", urlOrContent: "placeholder_url/content_sdg10_pres2" }
+    "fullDescription": "Inequality is a major barrier to sustainable development. This goal aims to reduce inequalities of income and opportunity within and among countries. This includes empowering and promoting the social, economic, and political inclusion of all, irrespective of age, sex, disability, race, ethnicity, origin, or religion.\nIt also addresses issues like safe migration and policies that promote financial inclusion and reduce income gaps.",
+    "lessons": [
+      {
+        "title": "Lesson 1: Inequality of Income vs. Opportunity",
+        "content": "Income inequality is the gap between the rich and the poor. Inequality of opportunity means that factors beyond a person's control, like their gender or birthplace, determine their chances in life. This lesson explores both.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: Measuring Inequality",
+        "content": "How do we know if a society is unequal? Economists use tools like the Gini coefficient and the Palma ratio to measure income distribution. This lesson provides a simple explanation of what these metrics mean.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Why Inequality is Bad for Everyone",
+        "content": "High levels of inequality are not just bad for those at the bottom; they can harm overall economic growth, fuel political instability, and erode social trust. This lesson discusses the broader societal impacts of inequality.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Understanding Systemic Discrimination", content: "How societal structures can perpetuate inequality...", type: "text_case_studies" },
-      { title: "Inclusive Policies for Equality", content: "Examples of policies aimed at reducing various forms of inequality...", type: "text_policy_briefs" }
+    "presentations": [
+      {
+        "title": "Presentation: Inequality Facts and Figures",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-10.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Identify Local Inequalities", description: "Research and report on a form of inequality present in your community or region.", submissionType: "report" },
-      { title: "Advocacy Letter Writing", description: "Write a letter to a local representative advocating for a policy to reduce a specific inequality.", submissionType: "letter" }
+    "practicalActivities": [
+      {
+        "title": "Activity: What is Social Inclusion?",
+        "description": "Social inclusion is the process of improving the terms on which individuals and groups take part in society. In the text box, write one example of what an inclusive community (like a school or workplace) looks like to you.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 11: Sustainable Cities and Communities
   {
-    sdgNumber: 11,
-    title: "Sustainable Cities and Communities",
-    shortDescription: "Make cities and human settlements inclusive, safe, resilient and sustainable.",
-    whatYouWillLearn: [
-      "Understand the challenges and opportunities of urbanization.",
-      "Learn about principles of sustainable urban planning and design.",
-      "Explore ways to make communities more inclusive, safe, and resilient."
+    "sdgNumber": 11,
+    "title": "Sustainable Cities and Communities",
+    "shortDescription": "Make cities and human settlements inclusive, safe, resilient and sustainable.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/16/56/69/60/1000_F_1656696022_Rp9cQOeaedzRX57JEBleA2K1DJSlzwyP.jpg",
+    "whatYouWillLearn": [
+      "The challenges of rapid urbanization, including slums and air pollution.",
+      "The concept of 'smart cities' and sustainable urban planning.",
+      "The importance of safe and accessible public transport and green spaces.",
+      "How to make cities more resilient to climate-related disasters."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/56/69/60/1000_F_1656696022_Rp9cQOeaedzRX57JEBleA2K1DJSlzwyP.jpg`,
-    fullDescription: "The world is becoming increasingly urbanized. Since 2007, more than half the world’s population has been living in cities, and that share is projected to rise to 60 per cent by 2030. Cities and metropolitan areas are powerhouses of economic growth—contributing about 60 per cent of global GDP. However, they also account for about 70 per cent of global carbon emissions and over 60 per cent of resource use.",
-    presentations: [
-      { title: "Challenges of Rapid Urbanization", urlOrContent: "placeholder_url/content_sdg11_pres1" },
-      { title: "Green Building and Sustainable Design", urlOrContent: "placeholder_url/content_sdg11_pres2" }
+    "fullDescription": "More than half of the world's population now lives in urban areas. By 2050, this figure is projected to rise to 6.5 billion people. This goal aims to make cities and human settlements inclusive, safe, resilient, and sustainable.\nKey targets include ensuring access to safe and affordable housing, upgrading slums, providing accessible public transport systems, and protecting the world's cultural and natural heritage.",
+    "lessons": [
+      {
+        "title": "Lesson 1: The Challenge of Rapid Urbanization",
+        "content": "When cities grow too quickly, they often can't keep up with services. This leads to the growth of slums, inadequate infrastructure, and high levels of air pollution. This lesson explores the challenges cities face today.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: What Makes a City 'Sustainable'?",
+        "content": "A sustainable city is designed with consideration for its social, economic, and environmental impact. This includes green public spaces, efficient public transport, and ways to manage waste and energy use effectively.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Urban Resilience",
+        "content": "Urban resilience is the capacity of a city to survive, adapt, and grow no matter what kinds of chronic stresses or acute shocks they experience. This includes everything from heatwaves and floods to economic downturns.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Urban Planning for Sustainability", content: "Key concepts like mixed-use development, public transport, and green spaces...", type: "text_interactive_map" },
-      { title: "Community Resilience and Disaster Preparedness", content: "Strategies for making communities able to withstand and recover from shocks...", type: "text_checklist" }
+    "presentations": [
+      {
+        "title": "Presentation: Cities by the Numbers",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-11.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Assess Your Community's Sustainability", description: "Evaluate your local community against criteria for sustainability (e.g., green spaces, transport, waste management).", submissionType: "assessment_report" },
-      { title: "Design a Sustainable Community Feature", description: "Propose a design for a sustainable feature in your community (e.g., a community garden, a bike path, a recycling program).", submissionType: "design_proposal" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Your Favorite Public Space",
+        "description": "Think about a public space in your town or city that you enjoy (like a park, library, or square). In the text box, write what it is and one reason why it's valuable to the community.",
+        "submissionType": "textResponse"
+      },
+      {
+        "title": "Activity: Sustainable Transport",
+        "description": "For your next short trip (under 2 km), try to walk or use a bicycle instead of a car or motorized vehicle. Mark this as complete to reflect on the benefits of sustainable transport.",
+        "submissionType": "none"
+      }
     ]
   },
-  // SDG 12: Responsible Consumption and Production
   {
-    sdgNumber: 12,
-    title: "Responsible Consumption and Production",
-    shortDescription: "Ensure sustainable consumption and production patterns.",
-    whatYouWillLearn: [
-      "Understand the impact of current consumption and production patterns on the environment.",
-      "Learn about the principles of a circular economy and sustainable lifestyles.",
-      "Explore ways individuals and businesses can promote responsible consumption and production."
+    "sdgNumber": 12,
+    "title": "Responsible Consumption and Production",
+    "shortDescription": "Ensure sustainable consumption and production patterns.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/14/17/17/02/1000_F_1417170261_zArniqDhtcmI8a481TDe9ounytbwMjdI.jpg",
+    "whatYouWillLearn": [
+      "The concept of a 'circular economy' (reduce, reuse, recycle).",
+      "The global 'material footprint' and what it means.",
+      "The problem of food waste from the consumer side.",
+      "How corporations and individuals can adopt sustainable practices."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/14/17/17/02/1000_F_1417170261_zArniqDhtcmI8a481TDe9ounytbwMjdI.jpg`,
-    fullDescription: "Sustainable consumption and production is about promoting resource and energy efficiency, sustainable infrastructure, and providing access to basic services, green and decent jobs and a better quality of life for all. Its implementation helps to achieve overall development plans, reduce future economic, environmental and social costs, strengthen economic competitiveness and reduce poverty.",
-    presentations: [
-      { title: "The Problem with Fast Fashion/Electronics", urlOrContent: "placeholder_url/content_sdg12_pres1" },
-      { title: "Introduction to Circular Economy", urlOrContent: "placeholder_url/content_sdg12_pres2" }
+    "fullDescription": "This goal is about doing more and better with less. It aims to decouple economic growth from resource use by promoting resource efficiency and sustainable consumption. It involves reducing food waste, managing chemicals and waste responsibly, and encouraging companies to adopt sustainable practices and reporting.\nIf the global population reaches 9.6 billion by 2050, we would need the equivalent of almost three planets to sustain our current lifestyles.",
+    "lessons": [
+      {
+        "title": "Lesson 1: Linear vs. Circular Economy",
+        "content": "Our current economy is 'linear': we take, make, and dispose. A 'circular economy' is regenerative by design. It aims to keep products and materials in use for as long as possible, extracting the maximum value from them. This lesson compares the two models.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: Understanding Your Footprint",
+        "content": "The 'material footprint' measures the total amount of raw materials extracted to meet our consumption demands. This lesson explores how our choices in food, electronics, and fashion contribute to this global footprint.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: The 3 R's (and more)",
+        "content": "We all know 'Reduce, Reuse, Recycle.' This lesson expands on this concept by introducing other 'R's like 'Refuse' (don't take what you don't need), 'Repair' (fix items instead of replacing them), and 'Rot' (compost organic waste).",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Understanding Your Ecological Footprint", content: "How daily choices impact resource use...", type: "text_calculator_link" },
-      { title: "Reduce, Reuse, Recycle, Rethink, Refuse", content: "Deep dive into the 5 R's of waste management...", type: "text_practical_tips" }
+    "presentations": [
+      {
+        "title": "Presentation: Consumption and Production Facts",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-12.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Conduct a Waste Audit", description: "Track and categorize your household waste for a week to identify areas for reduction.", submissionType: "audit_report_action_plan" },
-      { title: "Upcycling Project", description: "Create a new, useful item from materials that would otherwise be discarded.", submissionType: "project_photo_description" }
+    "practicalActivities": [
+      {
+        "title": "Activity: A Quick Waste Audit",
+        "description": "Look in your trash bin. What is the most common item you are throwing away (e.g., plastic wrappers, food scraps, paper)? In the text box, write down this item and one idea for how you could reduce it.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 13: Climate Action
   {
-    sdgNumber: 13,
-    title: "Climate Action",
-    shortDescription: "Take urgent action to combat climate change and its impacts.",
-    whatYouWillLearn: [
-      "Understand the science of climate change, its causes, and impacts.",
-      "Learn about international agreements and national policies for climate action.",
-      "Explore individual and collective actions to mitigate and adapt to climate change."
+    "sdgNumber": 13,
+    "title": "Climate Action",
+    "shortDescription": "Take urgent action to combat climate change and its impacts.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/16/59/11/22/1000_F_1659112289_lNsgDxhDUunHVunwMRHlrOH8cLKjh21b.jpg",
+    "whatYouWillLearn": [
+      "The science behind global warming and the greenhouse effect.",
+      "The difference between climate 'mitigation' and 'adaptation'.",
+      "The key agreements, like the Paris Agreement, that guide global action.",
+      "How climate change impacts every other SDG, from poverty to health."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/59/11/22/1000_F_1659112289_lNsgDxhDUunHVunwMRHlrOH8cLKjh21b.jpg`,
-    fullDescription: "Climate change is now affecting every country on every continent. It is disrupting national economies and affecting lives, costing people, communities and countries dearly today and even more tomorrow. Weather patterns are changing, sea levels are rising, and weather events are becoming more extreme. This SDG acknowledges that the UN Framework Convention on Climate Change is the primary international, intergovernmental forum for negotiating the global response to climate change.",
-    presentations: [
-      { title: "The Science of Global Warming", urlOrContent: "placeholder_url/content_sdg13_pres1" },
-      { title: "Climate Change Adaptation vs. Mitigation", urlOrContent: "placeholder_url/content_sdg13_pres2" }
+    "fullDescription": "Climate change is a global challenge that affects everyone, everywhere. 2019 was the second warmest year on record and the end of the warmest decade (2010-2019) ever recorded.\nThis goal urges urgent action to combat climate change and its impacts. It involves strengthening resilience and adaptive capacity to climate-related disasters, integrating climate change measures into national policies, and improving education on climate mitigation and adaptation.",
+    "lessons": [
+      {
+        "title": "Lesson 1: What is the Greenhouse Effect?",
+        "content": "The greenhouse effect is a natural process that warms the Earth's surface. When the Sun's energy reaches the Earth’s atmosphere, some of it is reflected back to space and the rest is absorbed and re-radiated by greenhouse gases. This lesson explains how human activities have intensified this effect.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: Mitigation vs. Adaptation",
+        "content": "To deal with climate change, we have two main strategies. 'Mitigation' means reducing the flow of greenhouse gases into the atmosphere (e.g., using solar panels). 'Adaptation' means adjusting to the current and future effects of climate change (e.g., building sea walls). This lesson explores both.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: The Paris Agreement",
+        "content": "The Paris Agreement is a legally binding international treaty on climate change adopted in 2015. Its primary goal is to limit global warming to well below 2 degrees Celsius, and preferably to 1.5 degrees, compared to pre-industrial levels.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Understanding Greenhouse Gases", content: "Sources and impacts of different GHGs...", type: "text_infographic" },
-      { title: "Renewable Energy's Role in Climate Action", content: "How transitioning to renewables helps combat climate change...", type: "text_case_studies" }
+    "presentations": [
+      {
+        "title": "Presentation: Climate Action by the Numbers",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-13.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Calculate Your Carbon Footprint", description: "Use an online calculator to estimate your carbon footprint and identify ways to reduce it.", submissionType: "footprint_report_action_plan" },
-      { title: "Advocate for Climate Policy", description: "Research a local or national climate policy and write a letter to a policymaker or an article for a local newspaper about it.", submissionType: "letter_or_article" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Calculate Your Carbon Footprint",
+        "description": "Use an online calculator (like footprint.wwf.org.uk or carbonfootprint.com) to estimate your personal carbon footprint. In the text box, share one activity of yours that has the biggest impact.",
+        "submissionType": "textResponse"
+      },
+      {
+        "title": "Activity: One Small Change",
+        "description": "Identify one small, concrete change you can make this week to reduce your carbon footprint (e.g., unplugging electronics, eating less meat, walking instead of driving). Mark as complete when you have your idea.",
+        "submissionType": "none"
+      }
     ]
   },
-  // SDG 14: Life Below Water
   {
-    sdgNumber: 14,
-    title: "Life Below Water",
-    shortDescription: "Conserve and sustainably use the oceans, seas and marine resources for sustainable development.",
-    whatYouWillLearn: [
-      "Understand the importance of oceans and marine ecosystems.",
-      "Learn about threats to marine biodiversity, such as pollution and overfishing.",
-      "Explore solutions for ocean conservation and sustainable use of marine resources."
+    "sdgNumber": 14,
+    "title": "Life Below Water",
+    "shortDescription": "Conserve and sustainably use the oceans, seas and marine resources for sustainable development.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/16/57/75/60/1000_F_1657756011_9S5lS1tOmIS72sXTWOMwxoZwH4N8ReFL.jpg",
+    "whatYouWillLearn": [
+      "The main threats to ocean health: pollution, overfishing, and acidification.",
+      "The problem of plastic pollution and its impact on marine life.",
+      "The importance of 'Marine Protected Areas' (MPAs).",
+      "How to sustainably manage fisheries and support coastal communities."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/16/57/75/60/1000_F_1657756011_9S5lS1tOmIS72sXTWOMwxoZwH4N8ReFL.jpg`,
-    fullDescription: "The world’s oceans – their temperature, chemistry, currents and life – drive global systems that make the Earth habitable for humankind. Our rainwater, drinking water, weather, climate, coastlines, much of our food, and even the oxygen in the air we breathe, are all ultimately provided and regulated by the sea. Careful management of this essential global resource is a key feature of a sustainable future.",
-    presentations: [
-      { title: "Threats to Marine Ecosystems (Plastic, Overfishing)", urlOrContent: "placeholder_url/content_sdg14_pres1" },
-      { title: "Marine Protected Areas (MPAs)", urlOrContent: "placeholder_url/content_sdg14_pres2" }
+    "fullDescription": "The world's oceans—their temperature, chemistry, currents, and life—drive global systems that make the Earth habitable for humankind. Our rainwater, drinking water, weather, climate, coastlines, and much of our food are all regulated by the seas.\nThis goal aims to conserve and sustainably use the oceans. Key targets include reducing marine pollution, regulating harvesting and ending overfishing, and conserving coastal and marine areas.",
+    "lessons": [
+      {
+        "title": "Lesson 1: The Threat of Plastic Pollution",
+        "content": "It is estimated that over 17 million metric tons of plastic entered the world's oceans in 2021. This plastic waste harms marine life, damages ecosystems, and even ends up in our food chain. This lesson explores the scale of the problem.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: Ocean Acidification",
+        "content": "The ocean absorbs about 30% of the carbon dioxide (CO2) released into the atmosphere. As CO2 levels rise, the seawater becomes more acidic. This 'ocean acidification' is devastating to marine life, especially shell-building organisms like corals and oysters.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Overfishing and Sustainable Fisheries",
+        "content": "Overfishing occurs when fish are caught faster than they can reproduce. This threatens the entire marine food web and the livelihoods of millions of people. This lesson discusses solutions like fishing quotas and Marine Protected Areas (MPAs).",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Ocean Acidification Explained", content: "Causes and consequences of increasing ocean acidity...", type: "text_animation" },
-      { title: "Sustainable Fishing Practices", content: "Methods and policies for ensuring fish stocks for the future...", type: "text_video_clips" }
+    "presentations": [
+      {
+        "title": "Presentation: Life Below Water Infographic",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-14.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Reduce Plastic Consumption", description: "Track your single-use plastic consumption for a week and develop a plan to reduce it significantly.", submissionType: "tracking_sheet_action_plan" },
-      { title: "Research a Marine Conservation Organization", description: "Learn about an organization working to protect marine life and present its work.", submissionType: "report_or_presentation" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Reduce Your Plastic Use",
+        "description": "For the next 24 hours, try to avoid all single-use plastics (bottles, straws, bags, wrappers). In the text box, describe one challenge you faced or one easy swap you made.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 15: Life on Land
   {
-    sdgNumber: 15,
-    title: "Life on Land",
-    shortDescription: "Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss.",
-    whatYouWillLearn: [
-      "Understand the importance of terrestrial ecosystems and biodiversity.",
-      "Learn about threats such as deforestation, desertification, and biodiversity loss.",
-      "Explore strategies for conservation, restoration, and sustainable land management."
+    "sdgNumber": 15,
+    "title": "Life on Land",
+    "shortDescription": "Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/17/12/15/59/1000_F_1712155933_CTLji9NbQ5rZ1UCOIEyZJTS9iZiXO8lP.jpg",
+    "whatYouWillLearn": [
+      "The main drivers of biodiversity loss and deforestation.",
+      "What 'land degradation' and 'desertification' mean.",
+      "The critical role of forests in combating climate change.",
+      "Strategies for protecting endangered species and restoring ecosystems."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/17/12/15/59/1000_F_1712155933_CTLji9NbQ5rZ1UCOIEyZJTS9iZiXO8lP.jpg`,
-    fullDescription: "Forests cover nearly 31 per cent of our planet’s land area. From the air we breathe, to the water we drink, to the food we eat–forests sustain us. Terrestrial ecosystems are vital for human well-being and livelihoods, supporting agriculture, forestry, and tourism. This SDG aims to conserve and restore the use of terrestrial ecosystems such as forests, wetlands, drylands and mountains by 2020.",
-    presentations: [
-      { title: "The Importance of Biodiversity", urlOrContent: "placeholder_url/content_sdg15_pres1" },
-      { title: "Deforestation: Causes and Solutions", urlOrContent: "placeholder_url/content_sdg15_pres2" }
+    "fullDescription": "Forests, deserts, and mountains are home to millions of species and are crucial for clean air and water. This goal aims to protect, restore, and promote the sustainable use of terrestrial ecosystems.\nIt calls for urgent action to halt deforestation, which is a major contributor to climate change, and to stop biodiversity loss, which threatens our planet's stability and our own food security.",
+    "lessons": [
+      {
+        "title": "Lesson 1: The Crisis of Biodiversity Loss",
+        "content": "Biodiversity is the variety of life on Earth. We are currently experiencing a biodiversity crisis, with an estimated 1 million species threatened with extinction. This lesson explains why biodiversity matters for healthy ecosystems and for human survival.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: Deforestation and Its Causes",
+        "content": "Forests cover 30% of the Earth's surface, but they are disappearing at an alarming rate. The primary driver is agriculture (clearing land for crops like palm oil and soy, or for cattle). This lesson explores the causes and effects of deforestation.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Desertification and Land Degradation",
+        "content": "'Desertification' is not the spread of existing deserts. It is the degradation of land in dryland areas, primarily caused by human activities and climate variations. This lesson discusses how we can restore degraded land and combat this threat.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Understanding Ecosystem Services", content: "The benefits humans derive from healthy ecosystems...", type: "text_examples" },
-      { title: "Reforestation and Afforestation Efforts", content: "Case studies of successful land restoration projects...", type: "text_image_gallery" }
+    "presentations": [
+      {
+        "title": "Presentation: Life on Land Infographic",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-15.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Identify Local Flora and Fauna", description: "Go on a nature walk (if safe and possible) or use online resources to identify and learn about 5 local plant and 5 local animal species.", submissionType: "species_list_descriptions" },
-      { title: "Plant a Tree or Start a Small Garden", description: "Participate in a tree-planting initiative or start a small garden (even indoors). Document your experience.", submissionType: "photo_journal_entry" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Identify a Native Species",
+        "description": "What is one plant or animal that is native to your specific region or state? In the text box, write its name and why it is important to your local ecosystem.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 16: Peace, Justice and Strong Institutions
   {
-    sdgNumber: 16,
-    title: "Peace, Justice and Strong Institutions",
-    shortDescription: "Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels.",
-    whatYouWillLearn: [
-      "Understand the links between peace, justice, human rights, and sustainable development.",
-      "Learn about challenges to peace, such as conflict, violence, and corruption.",
-      "Explore the role of effective, accountable, and inclusive institutions."
+    "sdgNumber": 16,
+    "title": "Peace, Justice and Strong Institutions",
+    "shortDescription": "Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels.",
+    "imageUrl": "https://as1.ftcdn.net/v2/jpg/14/63/05/84/1000_F_1463058441_Nqk57FKtPcN8TVVbnDSoDN7odKuWjmyW.jpg",
+    "whatYouWillLearn": [
+      "The link between peace, justice, and sustainable development.",
+      "The challenges of corruption, bribery, and illicit financial flows.",
+      "The importance of 'access to justice for all'.",
+      "What makes an institution 'accountable and inclusive'."
     ],
-    imageUrl: `https://as1.ftcdn.net/v2/jpg/14/63/05/84/1000_F_1463058441_Nqk57FKtPcN8TVVbnDSoDN7odKuWjmyW.jpg`,
-    fullDescription: "Peaceful, just and inclusive societies are necessary to achieve the Sustainable Development Goals (SDGs). People everywhere need to be free of fear from all forms of violence and feel safe as they go about their lives whatever their ethnicity, faith or sexual orientation. High levels of armed violence and insecurity have a destructive impact on a country’s development, affecting economic growth and often resulting in long standing grievances among communities.",
-    presentations: [
-      { title: "Understanding Human Rights", urlOrContent: "placeholder_url/content_sdg16_pres1" },
-      { title: "The Role of Good Governance", urlOrContent: "placeholder_url/content_sdg16_pres2" }
+    "fullDescription": "There can be no sustainable development without peace, and no peace without sustainable development. This goal focuses on promoting peaceful and inclusive societies, providing access to justice for all, and building effective, accountable institutions.\nIt aims to significantly reduce all forms of violence and work with governments and communities to find lasting solutions to conflict, insecurity, and corruption.",
+    "lessons": [
+      {
+        "title": "Lesson 1: The Link Between Peace and Development",
+        "content": "Conflict and violence are major obstacles to development. They destroy infrastructure, displace populations, and divert resources that could be spent on health and education. This lesson explores how peace is the foundation for achieving all other SDGs.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: What is 'Access to Justice'?",
+        "content": "Access to justice means that all people, especially the poor and marginalized, can seek and obtain a fair remedy for their grievances. This includes access to independent courts, legal aid, and fair treatment by police.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: Fighting Corruption",
+        "content": "Corruption undermines development by diverting public funds away from essential services like hospitals and schools. This lesson discusses what corruption is, how it is measured (e.g., the Corruption Perceptions Index), and the importance of strong, transparent institutions to fight it.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "Conflict Resolution and Peacebuilding", content: "Introduction to methods and strategies for resolving conflicts peacefully...", type: "text_scenarios" },
-      { title: "Access to Justice", content: "Challenges and solutions for ensuring everyone has access to fair legal systems...", type: "text_case_studies" }
+    "presentations": [
+      {
+        "title": "Presentation: Peace and Justice Infographic",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-16.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Research a Human Rights Issue", description: "Investigate a current human rights issue and summarize its key aspects and ongoing efforts to address it.", submissionType: "summary_report" },
-      { title: "Learn About Your Local Governance", description: "Identify your local government representatives and their roles, or attend (or watch a recording of) a local council meeting.", submissionType: "report_reflection" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Identify an 'Accountable Institution'",
+        "description": "An accountable institution is one that answers to the public (e.g., a free press, a public ombudsman, an independent election commission). In the text box, name one institution in your country designed to hold power to account.",
+        "submissionType": "textResponse"
+      }
     ]
   },
-  // SDG 17: Partnerships for the Goals
   {
-    sdgNumber: 17,
-    title: "Partnerships for the Goals",
-    shortDescription: "Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development.",
-    whatYouWillLearn: [
-      "Understand the importance of global partnerships and cooperation for achieving the SDGs.",
-      "Learn about the different actors involved (governments, civil society, private sector, academia).",
-      "Explore how finance, technology, capacity-building, and trade contribute to the SDGs."
+    "sdgNumber": 17,
+    "title": "Partnerships for the Goals",
+    "shortDescription": "Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/13/26/30/71/1000_F_1326307159_oP0R7JJL0YS28z0UWi8uvgy3VgLUhsYw.jpg",
+    "whatYouWillLearn": [
+      "Why global partnership is necessary to achieve the SDGs.",
+      "The role of finance, technology, and trade in supporting sustainable development.",
+      "The importance of data, monitoring, and accountability.",
+      "How governments, the private sector, and civil society must work together."
     ],
-    imageUrl: `https://as2.ftcdn.net/v2/jpg/13/26/30/71/1000_F_1326307159_oP0R7JJL0YS28z0UWi8uvgy3VgLUhsYw.jpg`,
-    fullDescription: "The SDGs can only be realized with strong global partnerships and cooperation. A successful sustainable development agenda requires partnerships between governments, the private sector and civil society. These inclusive partnerships built upon a shared vision and shared goals that place people and the planet at the centre, are needed at the global, regional, national and local level.",
-    presentations: [
-      { title: "The Role of Multi-Stakeholder Partnerships", urlOrContent: "placeholder_url/content_sdg17_pres1" },
-      { title: "Financing for Sustainable Development", urlOrContent: "placeholder_url/content_sdg17_pres2" }
+    "fullDescription": "The SDGs can only be realized with a strong global partnership and cooperation. This final goal aims to revitalize the global partnership for sustainable development, bringing together governments, the private sector, and civil society (NGOs and citizens).\nIt focuses on strengthening the 'means of implementation,' including finance, technology, and capacity-building, especially for developing countries, to ensure all goals can be met by 2030.",
+    "lessons": [
+      {
+        "title": "Lesson 1: The 'Means of Implementation'",
+        "content": "This phrase refers to the tools and resources needed to achieve the other 16 goals. This lesson breaks them down into three main categories: Finance (funding), Technology (innovation), and Capacity-Building (skills and training).",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 2: The Role of the Private Sector",
+        "content": "Governments cannot achieve the SDGs alone. The private sector (businesses and corporations) has a critical role to play by adopting sustainable practices, investing in clean technology, and creating decent jobs.",
+        "type": "text"
+      },
+      {
+        "title": "Lesson 3: The Role of Civil Society",
+        "content": "Civil society—which includes non-profits, community groups, and individual citizens—is essential for the SDGs. They are the 'on-the-ground' actors who implement projects, hold governments accountable, and give a voice to the most vulnerable.",
+        "type": "text"
+      }
     ],
-    lessons: [
-      { title: "How International Cooperation Works", content: "Examples of successful global partnerships for development...", type: "text_case_studies" },
-      { title: "The Role of Technology Transfer and Capacity Building", content: "Sharing knowledge and skills across borders for sustainable development...", type: "text_examples" }
+    "presentations": [
+      {
+        "title": "Presentation: Partnerships Infographic",
+        "urlOrContent": "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/07/Infographic-Goal-17.pdf"
+      }
     ],
-    practicalActivities: [
-      { title: "Identify a Local Partnership for an SDG", description: "Research and report on a local example of different organizations working together to address one of the SDGs.", submissionType: "report" },
-      { title: "Propose a Partnership Idea", description: "Think of a local issue related to an SDG and propose a potential partnership between two or more different types of organizations to tackle it.", submissionType: "proposal_outline" }
+    "practicalActivities": [
+      {
+        "title": "Activity: Identify a Partnership",
+        "description": "Think of any two organizations that have partnered for a good cause (e.g., a company and a non-profit). In the text box, write down their names and the goal they are working on together.",
+        "submissionType": "textResponse"
+      }
     ]
   }
 ];

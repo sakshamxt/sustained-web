@@ -12,6 +12,7 @@ import communityRoutes from './routes/communityRoutes.js';
 import insightsRoutes from './routes/insightsRoutes.js';
 import redemptionRoutes from './routes/redemptionRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import chatRoutes from './routes/chatRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -54,6 +55,9 @@ app.use('/api/redemption', redemptionRoutes);
 
 // Mount Admin routes
 app.use('/api/admin', adminRoutes);
+
+// Mount Chat routes
+app.use('/api/chat', chatRoutes);
 
 
 // Basic Error Handling Middleware (optional, can be expanded)

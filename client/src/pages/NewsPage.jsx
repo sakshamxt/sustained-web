@@ -40,8 +40,7 @@ const NewsPage = () => {
     (item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
     (item.text && item.text.toLowerCase().includes(searchTerm.toLowerCase()))
   );
-  
-  // UPDATED: Restored the logic for a featured article
+  // Filter news based on search term in title or text
   const featuredNews = filteredNews.length > 0 ? filteredNews[0] : null;
   const otherNews = filteredNews.length > 1 ? filteredNews.slice(1) : [];
 
@@ -50,7 +49,6 @@ const NewsPage = () => {
 
   return (
     <div className="container py-8 mx-auto">
-      {/* UPDATED: Using theme-aware colors */}
       <header className="py-12 mb-12 text-center border-b">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
           News & Insights
@@ -67,7 +65,6 @@ const NewsPage = () => {
           ) : filteredNews.length === 0 ? (
             <div className="py-20 text-center text-muted-foreground"><h3 className="text-2xl font-semibold">No Results Found</h3><p className="mt-2">Try a different search term.</p></div>
           ) : (
-            // UPDATED: Restored the magazine-style layout
             <div className="space-y-12">
               {featuredNews && (
                 <section className="opacity-0 animate-fade-in-up" style={{ animationFillMode: 'forwards' }}>
