@@ -40,9 +40,6 @@ const NewsPage = () => {
     (item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
     (item.text && item.text.toLowerCase().includes(searchTerm.toLowerCase()))
   );
-  // Filter news based on search term in title or text
-  const featuredNews = filteredNews.length > 0 ? filteredNews[0] : null;
-  const otherNews = filteredNews.length > 1 ? filteredNews.slice(1) : [];
 
   if (isLoading) return <LoadingSpinner size="lg" />;
   if (error) return ( <div className="container py-8 mx-auto text-center"><Alert variant="destructive" className="max-w-lg mx-auto"><Info className="w-4 h-4" /><AlertTitle>Error</AlertTitle><AlertDescription>{error}</AlertDescription></Alert></div> );
@@ -66,27 +63,10 @@ const NewsPage = () => {
             <div className="py-20 text-center text-muted-foreground"><h3 className="text-2xl font-semibold">No Results Found</h3><p className="mt-2">Try a different search term.</p></div>
           ) : (
             <div className="space-y-12">
-              {featuredNews && (
-                <section className="opacity-0 animate-fade-in-up" style={{ animationFillMode: 'forwards' }}>
-                  <Card className="grid grid-cols-1 md:grid-cols-2 overflow-hidden group">
-                    {featuredNews.imageUrl && (
-                      <CardHeader className="p-0">
-                        <img src={featuredNews.imageUrl} alt={featuredNews.title} className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
-                      </CardHeader>
-                    )}
-                    <CardContent className="flex flex-col p-8 lg:p-10">
-                      <div className="mb-3 text-sm text-muted-foreground">
-                        <span>{featuredNews.createdAt && !isNaN(new Date(featuredNews.createdAt)) ? format(new Date(featuredNews.createdAt), 'MMMM d, yyyy') : 'Unknown date'}</span> • by <Badge variant="secondary">{featuredNews.postedByAdmin?.username || 'Admin'}</Badge>
-                      </div>
-                      <CardTitle className="text-3xl font-bold text-foreground transition-colors group-hover:text-primary">{featuredNews.title}</CardTitle>
-                      <CardDescription className="mt-4 text-base leading-relaxed text-muted-foreground line-clamp-6 flex-grow">{featuredNews.text}</CardDescription>
-                    </CardContent>
-                  </Card>
-                </section>
-              )}
-              {otherNews.length > 0 && (
-                <section className="space-y-8 pt-12 border-t">
-                  {otherNews.map((item, index) => (
+  
+              {filteredNews.length > 0 && (
+                <section className="space-y-8">
+                  {filteredNews.map((item, index) => (
                     <div key={item._id || item.title} className="opacity-0 animate-fade-in-up" style={{ animationDelay: `${100 + index * 100}ms`, animationFillMode: 'forwards' }}>
                       <NewsCard newsItem={item} />
                     </div>
