@@ -10,6 +10,7 @@ import IndiaMap from '@/components/insights/IndiaMap';
 import Tooltip from '@/components/common/Tooltip';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import LearnerOfTheWeekCard from '../../components/insights/LearnerOfTheWeekCard';
 
 const IndiaHeatmapPage = () => {
   const [heatmapData, setHeatmapData] = useState([]);
@@ -138,7 +139,8 @@ const IndiaHeatmapPage = () => {
         </main>
 
         <aside className="lg:col-span-1 space-y-8 lg:sticky top-24 h-fit">
-          <Card>
+          <LearnerOfTheWeekCard/>
+            <Card>
             <CardHeader>
               <CardTitle className="flex items-center"><Trophy className="w-5 h-5 mr-2 text-amber-500" /> Top 3 Active States</CardTitle>
             </CardHeader>
