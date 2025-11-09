@@ -1,4 +1,4 @@
-// src/components/ChatbotPopup.jsx
+// src/components/ChatbotPopup.jsx - FIXED
 
 import React, { useState } from 'react';
 import Chatbot from './Chatbot';
@@ -13,24 +13,28 @@ const ChatbotPopup = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-end">
+    <>
+      {/* The Chatbot component is now rendered here. 
+        It will control its own position (full-screen on mobile, popup on desktop).
+      */}
       {isOpen && (
-        <div className="mb-4">
-          <Chatbot closeChat={toggleChat} />
-        </div>
+        <Chatbot closeChat={toggleChat} />
       )}
 
-      <Button
-        onClick={toggleChat}
-        className="rounded-full w-16 h-16 shadow-lg flex items-center justify-center transition-transform hover:scale-110"
-      >
-        {isOpen ? (
-          <X className="h-6 w-6 text-primary-foreground" />
-        ) : (
-          <BotMessageSquare className="h-6 w-6 text-primary-foreground" />
-        )}
-      </Button>
-    </div>
+      {/* This div is ONLY for the trigger button */}
+      <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
+        <Button
+            onClick={toggleChat}
+            className="rounded-full w-16 h-16 shadow-lg flex items-center justify-center transition-transform hover:scale-110"
+          >
+            {isOpen ? (
+              <X className="h-6 w-6 text-primary-foreground" />
+            ) : (
+              <BotMessageSquare className="h-6 w-6 text-primary-foreground" />
+            )}
+          </Button>
+      </div>
+    </>
   );
 };
 

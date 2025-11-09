@@ -1,5 +1,4 @@
-// src/pages/sdg/SdgListPage.jsx - UPDATED with larger cards
-
+// src/pages/sdg/SdgListPage.jsx
 import React, { useState, useEffect } from 'react';
 import apiClient from '@/lib/api';
 import SdgCard from '@/components/sdg/SdgCard';
@@ -61,10 +60,10 @@ const SdgListPage = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input type="search" placeholder="Search goals..." className="w-full pl-10 text-base" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
             </div>
-            <Button variant="outline">
+{/*             <Button variant="outline">
               <ListFilter className="w-4 h-4 mr-2" />
               Filters
-            </Button>
+            </Button> */}
           </div>
         </div>
       </section>
@@ -75,9 +74,7 @@ const SdgListPage = () => {
           <p className="mt-2">Try adjusting your search term.</p>
         </div>
       ) : (
-        // --- UPDATED GRID ---
-        // Changed lg:grid-cols-6 to lg:grid-cols-5 and increased gap for larger cards
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {filteredSdgs.map((sdg, index) => (
             <div
               key={sdg._id || sdg.sdgNumber}

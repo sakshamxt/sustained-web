@@ -38,14 +38,24 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
-        "title": "Activity: Research Local Poverty Initiatives",
-        "description": "Find one organization in your state or country that is working to fight poverty. In the text box, write its name and 1-2 sentences about its mission.",
-        "submissionType": "textResponse" 
+        "title": "Quiz: What is Extreme Poverty?",
+        "description": "Test your knowledge from Lesson 1.",
+        "submissionType": "quiz", // We define a new type
+        "quiz": {
+          "question": "What is the global benchmark for extreme poverty (as of 2022)?",
+          "options": [
+            { "text": "Less than $5.00 a day", "isCorrect": false },
+            { "text": "Less than $2.15 a day", "isCorrect": true },
+            { "text": "Less than $10.00 a day", "isCorrect": false },
+            { "text": "Less than $1.00 a day", "isCorrect": false }
+          ],
+          "explanation": "The World Bank updated the global poverty line to $2.15 per day in 2022 to reflect new purchasing power parity data."
+        }
       },
       {
-        "title": "Activity: The $2-a-Day Challenge (Reflection)",
-        "description": "Read an article about what it's like to live on less than $2.15 a day. After reading, mark this activity as complete and reflect on the challenges discussed.",
-        "submissionType": "none"
+        "title": "Activity: Research Local Initiatives",
+        "description": "Find one organization in your state working to fight poverty. In the text box, write its name and mission.",
+        "submissionType": "textResponse"
       }
     ]
   },
@@ -86,9 +96,23 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Key Concepts of Hunger",
+        "description": "Test your knowledge from Lesson 2.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What is the term for farming in a way that meets today's needs without compromising the future?",
+          "options": [
+            { "text": "Industrial Farming", "isCorrect": false },
+            { "text": "Malnutrition", "isCorrect": false },
+            { "text": "Sustainable Agriculture", "isCorrect": true }
+          ],
+          "explanation": "Sustainable agriculture focuses on long-term health of the land, water, and biodiversity to ensure food security for future generations."
+        }
+      },
+      {
         "title": "Activity: My Weekly Food Waste",
         "description": "For one day, try to keep a small log of any food you throw away (e.g., uneaten leftovers, spoiled fruit). In the box, reflect on one change you could make to reduce this waste.",
-        "submissionType": "textResponse" 
+        "submissionType": "textResponse"
       }
     ]
   },
@@ -129,13 +153,27 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Understanding UHC",
+        "description": "Test your knowledge from Lesson 1.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What does 'Universal Health Coverage' (UHC) mean?",
+          "options": [
+            { "text": "Access to free medicine only", "isCorrect": false },
+            { "text": "Access to quality health services without financial hardship", "isCorrect": true },
+            { "text": "Having a hospital in every city", "isCorrect": false }
+          ],
+          "explanation": "UHC means all people have access to the full range of quality health services they need, when and where they need them, without financial hardship."
+        }
+      },
+      {
         "title": "Activity: 5-Minute Mindfulness",
-        "description": "Mental well-being is a key part of this SDG. Take five minutes to follow a guided mindfulness or breathing exercise (you can find many on YouTube). Mark this as complete once you are done.",
+        "description": "Mental well-being is a key part of this SDG. Take five minutes to follow a guided mindfulness or breathing exercise. Mark this as complete when you are done.",
         "submissionType": "none"
       },
       {
         "title": "Activity: Local Health Access",
-        "description": "Identify the closest public health clinic or hospital to your location. What services does it provide? Write 1-2 sentences about the importance of having such a facility in your community.",
+        "description": "Identify the closest public health clinic or hospital to your location. What services does it provide? Write 1-2 sentences about its importance.",
         "submissionType": "textResponse"
       }
     ]
@@ -176,6 +214,20 @@ const sdgs = [
       }
     ],
     "practicalActivities": [
+      {
+        "title": "Quiz: Barriers to Education",
+        "description": "Test your knowledge from Lesson 1.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "Which of these is mentioned as a primary barrier to education?",
+          "options": [
+            { "text": "Lack of interest from students", "isCorrect": false },
+            { "text": "Too many holidays", "isCorrect": false },
+            { "text": "Poverty and gender discrimination", "isCorrect": true }
+          ],
+          "explanation": "Poverty, gender discrimination, and conflict are major barriers that prevent millions of children from attending school."
+        }
+      },
       {
         "title": "Activity: Share a Skill",
         "description": "Lifelong learning includes sharing knowledge. Think of one skill you have (coding, cooking, a math concept, a craft) and briefly explain how you would teach it to someone in 3 simple steps.",
@@ -220,9 +272,18 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
-        "title": "Activity: Recognizing Unpaid Work",
-        "description": "For one day, try to estimate the hours you and your family members spend on unpaid tasks (e.g., cooking, cleaning, child care). In the text box, reflect on whether this work is shared equally.",
-        "submissionType": "textResponse"
+        "title": "Quiz: Unpaid Care Work",
+        "description": "Test your knowledge from Lesson 3.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "According to the lesson, who performs a disproportionate share of unpaid domestic and care work globally?",
+          "options": [
+            { "text": "Men", "isCorrect": false },
+            { "text": "Women", "isCorrect": true },
+            { "text": "It is shared equally", "isCorrect": false }
+          ],
+          "explanation": "Globally, women and girls perform the vast majority of unpaid care and domestic work, which limits their time for education and paid employment."
+        }
       },
       {
         "title": "Activity: Identify a Female Leader",
@@ -268,6 +329,21 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Understanding WASH",
+        "description": "Test your knowledge from Lesson 2.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What does the 'A' in WASH stand for?",
+          "options": [
+            { "text": "Agriculture", "isCorrect": false },
+            { "text": "Action", "isCorrect": false },
+            { "text": "And", "isCorrect": false },
+            { "text": "All (Water, Sanitation, and Hygiene for All)", "isCorrect": false }
+          ],
+          "explanation": "Trick question! WASH stands for Water, Sanitation, and Hygiene. There is no 'A'. This emphasizes the three core pillars."
+        }
+      },
+      {
         "title": "Activity: Your Personal Water Footprint",
         "description": "Use an online calculator (like watercalculator.org) to estimate your daily water footprint. In the text box, share one thing you learned or one way you could reduce your water use.",
         "submissionType": "textResponse"
@@ -311,14 +387,23 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Energy Efficiency",
+        "description": "Test your knowledge from Lesson 3.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What is the best definition of 'energy efficiency'?",
+          "options": [
+            { "text": "Using only solar panels.", "isCorrect": false },
+            { "text": "Using less energy to perform the same task.", "isCorrect": true },
+            { "text": "Turning off lights when you leave a room.", "isCorrect": false }
+          ],
+          "explanation": "Energy efficiency is about using less energy to get the same (or better) result, like an LED bulb using less energy than an incandescent bulb for the same amount of light."
+        }
+      },
+      {
         "title": "Activity: Home Energy Audit",
         "description": "Look around your home for 5 minutes. Identify one device that uses electricity even when it's 'off' (a 'vampire load'), like a TV on standby. Mark this as complete when you've found one.",
         "submissionType": "none"
-      },
-      {
-        "title": "Activity: Research a Renewable Energy",
-        "description": "Choose one renewable energy source (solar, wind, etc.). In the text box, write one interesting fact you learned about it.",
-        "submissionType": "textResponse"
       }
     ]
   },
@@ -358,6 +443,21 @@ const sdgs = [
       }
     ],
     "practicalActivities": [
+      {
+        "title": "Quiz: Pillars of Decent Work",
+        "description": "Test your knowledge from Lesson 1.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "Which of these is NOT one of the four pillars of Decent Work?",
+          "options": [
+            { "text": "Employment", "isCorrect": false },
+            { "text": "High Salary", "isCorrect": true },
+            { "text": "Social Protection", "isCorrect": false },
+            { "text": "Social Dialogue", "isCorrect": false }
+          ],
+          "explanation": "The four pillars are: employment, rights, social protection, and social dialogue. A 'fair income' is a component, but 'high salary' is not the specific pillar."
+        }
+      },
       {
         "title": "Activity: Check Your Labels",
         "description": "Look at the labels on 3-5 items of clothing you own. Where were they made? Many global supply chains are complex. In the text box, list two countries you found.",
@@ -402,6 +502,20 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: The Digital Divide",
+        "description": "Test your knowledge from Lesson 3.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What does the 'digital divide' refer to?",
+          "options": [
+            { "text": "The gap in math skills between students", "isCorrect": false },
+            { "text": "The gap between those with and without internet access", "isCorrect": true },
+            { "text": "The difference between digital and analog clocks", "isCorrect": false }
+          ],
+          "explanation": "The 'digital divide' refers to the gap between those who have access to modern information and communication technology (like the internet) and those who do not."
+        }
+      },
+      {
         "title": "Activity: Identify Local Infrastructure",
         "description": "Think about the infrastructure you use every day (roads, internet, electricity, water pipes). In the text box, name one piece of infrastructure you rely on and one way your life would be different without it.",
         "submissionType": "textResponse"
@@ -444,6 +558,20 @@ const sdgs = [
       }
     ],
     "practicalActivities": [
+      {
+        "title": "Quiz: Forms of Inequality",
+        "description": "Test your knowledge from Lesson 1.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "When factors like gender or birthplace determine a person's chances in life, this is called:",
+          "options": [
+            { "text": "Income Inequality", "isCorrect": false },
+            { "text": "Inequality of Opportunity", "isCorrect": true },
+            { "text": "The Gini Coefficient", "isCorrect": false }
+          ],
+          "explanation": "Inequality of Opportunity refers to inequalities that arise from circumstances beyond an individual's control."
+        }
+      },
       {
         "title": "Activity: What is Social Inclusion?",
         "description": "Social inclusion is the process of improving the terms on which individuals and groups take part in society. In the text box, write one example of what an inclusive community (like a school or workplace) looks like to you.",
@@ -488,14 +616,23 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Sustainable Cities",
+        "description": "Test your knowledge from Lesson 2.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "Which of the following is a key feature of a 'sustainable city'?",
+          "options": [
+            { "text": "More highways", "isCorrect": false },
+            { "text": "Larger shopping malls", "isCorrect": false },
+            { "text": "Green public spaces and efficient public transport", "isCorrect": true }
+          ],
+          "explanation": "Sustainable cities prioritize green spaces, clean public transport, and efficient resource management."
+        }
+      },
+      {
         "title": "Activity: Your Favorite Public Space",
         "description": "Think about a public space in your town or city that you enjoy (like a park, library, or square). In the text box, write what it is and one reason why it's valuable to the community.",
         "submissionType": "textResponse"
-      },
-      {
-        "title": "Activity: Sustainable Transport",
-        "description": "For your next short trip (under 2 km), try to walk or use a bicycle instead of a car or motorized vehicle. Mark this as complete to reflect on the benefits of sustainable transport.",
-        "submissionType": "none"
       }
     ]
   },
@@ -535,6 +672,20 @@ const sdgs = [
       }
     ],
     "practicalActivities": [
+      {
+        "title": "Quiz: Circular Economy",
+        "description": "Test your knowledge from Lesson 1.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What is the primary goal of a 'circular economy'?",
+          "options": [
+            { "text": "To keep products and materials in use", "isCorrect": true },
+            { "text": "To make products as cheaply as possible", "isCorrect": false },
+            { "text": "To ship products globally", "isCorrect": false }
+          ],
+          "explanation": "A circular economy is regenerative and aims to keep products and materials in use for as long as possible, minimizing waste."
+        }
+      },
       {
         "title": "Activity: A Quick Waste Audit",
         "description": "Look in your trash bin. What is the most common item you are throwing away (e.g., plastic wrappers, food scraps, paper)? In the text box, write down this item and one idea for how you could reduce it.",
@@ -579,14 +730,23 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Mitigation vs. Adaptation",
+        "description": "Test your knowledge from Lesson 2.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "Building a sea wall to protect a city from rising sea levels is an example of:",
+          "options": [
+            { "text": "Climate Mitigation", "isCorrect": false },
+            { "text": "Climate Adaptation", "isCorrect": true },
+            { "text": "The Greenhouse Effect", "isCorrect": false }
+          ],
+          "explanation": "Adaptation is adjusting to the current and future effects of climate change. Mitigation is about reducing emissions."
+        }
+      },
+      {
         "title": "Activity: Calculate Your Carbon Footprint",
         "description": "Use an online calculator (like footprint.wwf.org.uk or carbonfootprint.com) to estimate your personal carbon footprint. In the text box, share one activity of yours that has the biggest impact.",
         "submissionType": "textResponse"
-      },
-      {
-        "title": "Activity: One Small Change",
-        "description": "Identify one small, concrete change you can make this week to reduce your carbon footprint (e.g., unplugging electronics, eating less meat, walking instead of driving). Mark as complete when you have your idea.",
-        "submissionType": "none"
       }
     ]
   },
@@ -626,6 +786,20 @@ const sdgs = [
       }
     ],
     "practicalActivities": [
+      {
+        "title": "Quiz: Ocean Acidification",
+        "description": "Test your knowledge from Lesson 2.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What is the primary cause of ocean acidification?",
+          "options": [
+            { "text": "Oil spills", "isCorrect": false },
+            { "text": "The ocean absorbing excess Carbon Dioxide (CO2)", "isCorrect": true },
+            { "text": "Plastic pollution", "isCorrect": false }
+          ],
+          "explanation": "The ocean absorbs about 30% of the CO2 released into the atmosphere, which causes the water to become more acidic."
+        }
+      },
       {
         "title": "Activity: Reduce Your Plastic Use",
         "description": "For the next 24 hours, try to avoid all single-use plastics (bottles, straws, bags, wrappers). In the text box, describe one challenge you faced or one easy swap you made.",
@@ -670,6 +844,20 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Deforestation",
+        "description": "Test your knowledge from Lesson 2.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "What is the primary driver (main cause) of deforestation globally?",
+          "options": [
+            { "text": "Wildfires", "isCorrect": false },
+            { "text": "Logging for paper", "isCorrect": false },
+            { "text": "Clearing land for agriculture", "isCorrect": true }
+          ],
+          "explanation": "The primary driver of deforestation is clearing land for agriculture, such as for cattle ranching or growing crops like palm oil and soy."
+        }
+      },
+      {
         "title": "Activity: Identify a Native Species",
         "description": "What is one plant or animal that is native to your specific region or state? In the text box, write its name and why it is important to your local ecosystem.",
         "submissionType": "textResponse"
@@ -713,6 +901,20 @@ const sdgs = [
     ],
     "practicalActivities": [
       {
+        "title": "Quiz: Corruption",
+        "description": "Test your knowledge from Lesson 3.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "How does corruption harm sustainable development?",
+          "options": [
+            { "text": "It creates more jobs.", "isCorrect": false },
+            { "text": "It speeds up legal processes.", "isCorrect": false },
+            { "text": "It diverts public funds from essential services like schools.", "isCorrect": true }
+          ],
+          "explanation": "Corruption diverts funds that were intended for public services like healthcare and education, which directly undermines development."
+        }
+      },
+      {
         "title": "Activity: Identify an 'Accountable Institution'",
         "description": "An accountable institution is one that answers to the public (e.g., a free press, a public ombudsman, an independent election commission). In the text box, name one institution in your country designed to hold power to account.",
         "submissionType": "textResponse"
@@ -755,6 +957,20 @@ const sdgs = [
       }
     ],
     "practicalActivities": [
+      {
+        "title": "Quiz: Key Players",
+        "description": "Test your knowledge from the lessons.",
+        "submissionType": "quiz",
+        "quiz": {
+          "question": "Which three groups must work together in a 'Global Partnership' to achieve the SDGs?",
+          "options": [
+            { "text": "Governments, the Private Sector, and Civil Society", "isCorrect": true },
+            { "text": "Scientists, Teachers, and Farmers", "isCorrect": false },
+            { "text": "The UN, the World Bank, and the IMF", "isCorrect": false }
+          ],
+          "explanation": "SDG 17 calls for a partnership between governments, the private sector (businesses), and civil society (non-profits and citizens)."
+        }
+      },
       {
         "title": "Activity: Identify a Partnership",
         "description": "Think of any two organizations that have partnered for a good cause (e.g., a company and a non-profit). In the text box, write down their names and the goal they are working on together.",

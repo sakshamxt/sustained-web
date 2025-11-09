@@ -1,4 +1,4 @@
-// src/pages/NewsPage.jsx - UPDATED
+// src/pages/NewsPage.jsx
 
 import React from 'react';
 import { useState, useEffect } from 'react';
@@ -78,8 +78,7 @@ const NewsPage = () => {
         </main>
 
         {/* Sidebar (1/3 width) */}
-        <aside className="lg:col-span-1 space-y-8 lg:sticky top-24 h-fit">
-          {/* UPDATED: Replaced bg-slate-50 with bg-secondary and text-slate-xxx with theme-aware colors */}
+        <aside className="lg:col-span-1 space-y-8 lg:sticky top-24 h-fit">         
           <div className="p-6 rounded-lg bg-secondary border">
             <h3 className="text-lg font-bold text-foreground mb-4">Search News</h3>
             <div className="relative">
@@ -93,7 +92,7 @@ const NewsPage = () => {
               />
             </div>
           </div>
-          <div className="p-6 rounded-lg bg-secondary border">
+{/*           <div className="p-6 rounded-lg bg-secondary border">
             <h3 className="text-lg font-bold text-foreground mb-4">Categories</h3>
             <div className="flex flex-wrap gap-2">
               <Badge variant="outline">Announcements</Badge>
@@ -101,7 +100,7 @@ const NewsPage = () => {
               <Badge variant="outline">Events</Badge>
               <Badge variant="outline">Updates</Badge>
             </div>
-          </div>
+          </div> */}
         </aside>
       </div>
     </div>
